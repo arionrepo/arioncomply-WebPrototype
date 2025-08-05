@@ -3,95 +3,118 @@
 # Focus: Avatar-first interface with multi-modal conversation
 
 name: arioncomply_demo
-description: ArionComply Personal AI Compliance Expert Demo
+description: ArionComply Personal AI Compliance Expert Demo - Revolutionary avatar-first interface for compliance guidance
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.16.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  # State Management - Riverpod for complex business logic
+  # ===== STATE MANAGEMENT =====
+  # Riverpod for complex business logic and avatar state
   flutter_riverpod: ^2.4.9
   riverpod_annotation: ^2.3.3
 
-  # Routing - GoRouter for web-friendly routing  
+  # ===== ROUTING & NAVIGATION =====
+  # GoRouter for web-friendly routing and deep links
   go_router: ^13.0.0
 
-  # UI & Animations - For avatar interface
+  # ===== UI & ANIMATIONS =====
+  # For avatar interface and smooth transitions
   animations: ^2.0.11
-  lottie: ^3.0.0
-  rive: ^0.12.4
+  lottie: ^3.0.0              # Avatar animations (Lottie files)
+  rive: ^0.12.4               # Advanced avatar animations
+  cupertino_icons: ^1.0.8     # iOS-style icons
 
-  # Speech & Audio - Multi-modal conversation system
-  speech_to_text: ^6.6.0
-  text_to_speech: ^4.0.2
-  flutter_tts: ^4.0.2
-  record: ^5.0.4
-  audioplayers: ^5.2.1
+  # ===== VOICE & AUDIO =====
+  # Multi-modal conversation system (voice + text)
+  speech_to_text: ^6.6.0      # Voice input recognition
+  flutter_tts: ^4.0.2         # Text-to-speech output
+  record: ^5.0.4              # Audio recording
+  audioplayers: ^5.2.1        # Audio playback
+  permission_handler: ^11.1.0  # Microphone permissions
 
-  # HTTP & API - For AI backend integration
-  dio: ^5.4.0
-  retrofit: ^4.0.3
-  json_annotation: ^4.8.1
+  # ===== HTTP & API =====
+  # For AI backend integration and external services
+  dio: ^5.4.0                 # HTTP client
+  retrofit: ^4.0.3            # Type-safe HTTP client
+  json_annotation: ^4.8.1     # JSON serialization annotations
 
-  # Storage - Local persistence for demo data
-  shared_preferences: ^2.2.2
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
+  # ===== LOCAL STORAGE =====
+  # For demo data persistence and user preferences
+  shared_preferences: ^2.2.2   # Simple key-value storage
+  hive: ^2.2.3                # Fast NoSQL database
+  hive_flutter: ^1.1.0        # Hive Flutter integration
 
-  # Utils & Helpers
-  uuid: ^4.2.1
-  intl: ^0.19.0
-  url_launcher: ^6.2.2
+  # ===== UTILITIES =====
+  uuid: ^4.2.1                # Unique identifier generation
+  intl: ^0.19.0               # Internationalization and date formatting
+  url_launcher: ^6.2.2        # Open external URLs
 
-  # Web-specific for embedding
-  js: ^0.6.7
-  html: ^0.15.4
+  # ===== WEB-SPECIFIC =====
+  # For embedding in marketing websites
+  js: ^0.6.7                  # JavaScript interop
+  html: ^0.15.4               # HTML manipulation
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   
-  # Code Generation
-  build_runner: ^2.4.7
-  riverpod_generator: ^2.3.9
-  retrofit_generator: ^8.0.4
-  json_serializable: ^6.7.1
-  hive_generator: ^2.0.1
+  # ===== CODE GENERATION =====
+  # Build tools for generating boilerplate code
+  build_runner: ^2.4.7        # Code generation runner
+  riverpod_generator: ^2.3.9   # Riverpod code generation
+  retrofit_generator: ^8.0.4   # Retrofit code generation
+  json_serializable: ^6.7.1    # JSON serialization generation
+  hive_generator: ^2.0.1       # Hive type adapters generation
 
-  # Linting
-  flutter_lints: ^3.0.1
+  # ===== LINTING & ANALYSIS =====
+  flutter_lints: ^3.0.1       # Recommended linting rules
 
+# ===== FLUTTER CONFIGURATION =====
 flutter:
   uses-material-design: true
 
+  # ===== ASSETS =====
   assets:
-    # Avatar Assets
+    # Avatar Assets - Lottie animations and 3D models
     - assets/avatars/
     - assets/animations/
+    
+    # Audio Assets - Notification sounds and voice samples
     - assets/audio/
     
-    # Framework Data
-    - assets/data/frameworks.json
-    - assets/data/questions.json
-    - assets/data/templates.json
+    # Demo Data - Framework definitions and sample conversations
+    - assets/data/
     
-    # Images & Icons
+    # Visual Assets - Images, icons, and branding
     - assets/images/
     - assets/icons/
     
-    # Fonts for professional appearance
+  # ===== FONTS =====
+  # Professional Inter font family for compliance industry aesthetics
   fonts:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
         - asset: assets/fonts/Inter-Medium.ttf
           weight: 500
         - asset: assets/fonts/Inter-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/Inter-Bold.ttf
           weight: 700
+
+# ===== FLUTTER WEB CONFIGURATION =====
+# Optimizations for web deployment and embedding
+flutter:
+  web:
+    # Enable WASM compilation for better performance
+    wasm: true
+    # Optimize for embedding in iframes
+    renderer: canvaskit

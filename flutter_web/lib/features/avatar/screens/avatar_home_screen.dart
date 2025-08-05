@@ -10,7 +10,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/responsive_layout.dart';
-import '../providers/avatar_state_provider.dart';
+import '../providers/avatar_state_provider.dart'; // This contains the real AvatarState
 import '../widgets/avatar_3d_display.dart';
 import '../widgets/conversation_interface.dart';
 import '../widgets/avatar_status_indicator.dart';
@@ -405,84 +405,6 @@ class _AvatarHomeScreenState extends ConsumerState<AvatarHomeScreen>
           ref.read(avatarStateProvider.notifier).toggleVoiceInput();
         },
       ),
-    );
-  }
-}
-
-// lib/features/avatar/models/avatar_state.dart
-// Avatar state management for conversation-driven interface
-
-enum AvatarStateType {
-  idle,
-  listening,
-  processing,
-  speaking,
-  explaining,
-  celebrating,
-  concerned,
-}
-
-enum AvatarEmotion {
-  neutral,
-  happy,
-  focused,
-  encouraging,
-  serious,
-  celebrating,
-}
-
-class AvatarState {
-  final String name;
-  final String role;
-  final AvatarStateType currentState;
-  final AvatarEmotion currentEmotion;
-  final String currentMessage;
-  final bool isProcessing;
-  final bool voiceEnabled;
-  final bool voiceInputEnabled;
-  final bool showHints;
-  final List<String> conversationHistory;
-  final DateTime lastInteraction;
-
-  const AvatarState({
-    this.name = 'Alex',
-    this.role = 'Senior Compliance Expert',
-    this.currentState = AvatarStateType.idle,
-    this.currentEmotion = AvatarEmotion.neutral,
-    this.currentMessage = '',
-    this.isProcessing = false,
-    this.voiceEnabled = true,
-    this.voiceInputEnabled = false,
-    this.showHints = true,
-    this.conversationHistory = const [],
-    DateTime? lastInteraction,
-  }) : lastInteraction = lastInteraction ?? DateTime.now();
-
-  AvatarState copyWith({
-    String? name,
-    String? role,
-    AvatarStateType? currentState,
-    AvatarEmotion? currentEmotion,
-    String? currentMessage,
-    bool? isProcessing,
-    bool? voiceEnabled,
-    bool? voiceInputEnabled,  
-    bool? showHints,
-    List<String>? conversationHistory,
-    DateTime? lastInteraction,
-  }) {
-    return AvatarState(
-      name: name ?? this.name,
-      role: role ?? this.role,
-      currentState: currentState ?? this.currentState,
-      currentEmotion: currentEmotion ?? this.currentEmotion,
-      currentMessage: currentMessage ?? this.currentMessage,
-      isProcessing: isProcessing ?? this.isProcessing,
-      voiceEnabled: voiceEnabled ?? this.voiceEnabled,
-      voiceInputEnabled: voiceInputEnabled ?? this.voiceInputEnabled,
-      showHints: showHints ?? this.showHints,
-      conversationHistory: conversationHistory ?? this.conversationHistory,
-      lastInteraction: lastInteraction ?? this.lastInteraction,
     );
   }
 }

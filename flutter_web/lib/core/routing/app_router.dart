@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/foundation.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../features/avatar/screens/avatar_home_screen.dart';
 import '../../features/framework/screens/framework_selection_screen.dart';
 import '../../features/assessment/screens/assessment_screen.dart';
@@ -308,8 +310,7 @@ class AppRouter {
 // lib/core/routing/route_observer.dart
 // Route observer for analytics and state management
 
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+
 
 class AppRouteObserver extends RouteObserver<ModalRoute<dynamic>> {
   @override
@@ -343,8 +344,7 @@ class AppRouteObserver extends RouteObserver<ModalRoute<dynamic>> {
 // lib/features/avatar/screens/avatar_home_screen.dart (updated)
 // Avatar Home Screen with onboarding support
 
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 class AvatarHomeScreen extends ConsumerStatefulWidget {
   final bool showOnboarding;
@@ -396,9 +396,6 @@ class _AvatarHomeScreenState extends ConsumerState<AvatarHomeScreen> {
 // lib/features/common/screens/error_screen.dart
 // Error handling screens
 
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import '../../../core/theme/app_colors.dart';
 
 class ErrorScreen extends StatelessWidget {
   final Object? error;

@@ -1,0 +1,334 @@
+Analyzing flutter_web...                                        
+
+  error • The named parameter 'urlPathStrategy' isn't defined • lib/core/routing/app_router.dart:28:5 • undefined_named_parameter
+  error • Undefined name 'UrlPathStrategy' • lib/core/routing/app_router.dart:28:22 • undefined_identifier
+  error • The name 'FrameworkSelectionScreen' isn't a class • lib/core/routing/app_router.dart:46:24 • creation_with_non_type
+  error • The method 'FrameworkSelectionScreen' isn't defined for the type 'AppRouter' • lib/core/routing/app_router.dart:56:18 • undefined_method
+  error • The method 'AssessmentScreen' isn't defined for the type 'AppRouter' • lib/core/routing/app_router.dart:67:18 • undefined_method
+  error • The method 'StandaloneChatScreen' isn't defined for the type 'AppRouter' • lib/core/routing/app_router.dart:80:18 • undefined_method
+  error • The name 'DemoShowcaseScreen' isn't a class • lib/core/routing/app_router.dart:89:24 • creation_with_non_type
+  error • The method 'EmbeddedWidgetScreen' isn't defined for the type 'AppRouter' • lib/core/routing/app_router.dart:102:18 • undefined_method
+  error • The method 'FrameworkSelectionScreen' isn't defined for the type 'AppRouter' • lib/core/routing/app_router.dart:190:12 • undefined_method
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:311:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:312:1 • directive_after_declaration
+   info • Don't invoke 'print' in production code • lib/core/routing/app_router.dart:335:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/core/routing/app_router.dart:337:9 • avoid_print
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:346:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:347:1 • directive_after_declaration
+  error • Undefined name 'avatarStateProvider' • lib/core/routing/app_router.dart:378:16 • undefined_identifier
+  error • Undefined name 'avatarStateProvider' • lib/core/routing/app_router.dart:385:16 • undefined_identifier
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:399:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:400:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/routing/app_router.dart:401:1 • directive_after_declaration
+   info • Use 'const' with the constructor to improve performance • lib/core/routing/app_router.dart:416:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/core/routing/app_router.dart:455:13 • prefer_const_constructors
+   info • Don't invoke 'print' in production code • lib/core/services/ai_transparency_service.dart:129:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/core/services/ai_transparency_service.dart:235:7 • avoid_print
+   info • 'partialResults' is deprecated and shouldn't be used. Use SpeechListenOptions.partialResults instead • lib/core/services/audio_service.dart:160:9 • deprecated_member_use
+   info • 'cancelOnError' is deprecated and shouldn't be used. Use SpeechListenOptions.cancelOnError instead • lib/core/services/audio_service.dart:162:9 • deprecated_member_use
+   info • 'listenMode' is deprecated and shouldn't be used. Use SpeechListenOptions.listenMode instead • lib/core/services/audio_service.dart:163:9 • deprecated_member_use
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:331:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:332:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:333:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:334:1 • directive_after_declaration
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/services/audio_service.dart:424:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/services/audio_service.dart:431:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/services/audio_service.dart:451:52 • deprecated_member_use
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:551:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:552:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:660:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/core/services/audio_service.dart:661:1 • directive_after_declaration
+  error • Target of URI doesn't exist: '../models/expert_personality.dart' • lib/core/services/audio_service.dart:661:8 • uri_does_not_exist
+  error • Undefined class 'ExpertPersonalityType' • lib/core/services/audio_service.dart:671:14 • undefined_class
+  error • Undefined class 'ExpertEmotion' • lib/core/services/audio_service.dart:672:14 • undefined_class
+  error • Undefined class 'ExpertPersonalityType' • lib/core/services/audio_service.dart:689:5 • undefined_class
+  error • Undefined class 'ExpertEmotion' • lib/core/services/audio_service.dart:690:5 • undefined_class
+  error • Undefined name 'ExpertPersonalityType' • lib/core/services/audio_service.dart:696:12 • undefined_identifier
+  error • Undefined name 'ExpertPersonalityType' • lib/core/services/audio_service.dart:699:12 • undefined_identifier
+  error • Undefined name 'ExpertPersonalityType' • lib/core/services/audio_service.dart:702:12 • undefined_identifier
+  error • Undefined name 'ExpertEmotion' • lib/core/services/audio_service.dart:710:12 • undefined_identifier
+  error • Undefined name 'ExpertEmotion' • lib/core/services/audio_service.dart:716:12 • undefined_identifier
+  error • Undefined name 'ExpertEmotion' • lib/core/services/audio_service.dart:722:12 • undefined_identifier
+   info • Don't invoke 'print' in production code • lib/core/services/storage_service.dart:375:9 • avoid_print
+warning • Unused import: 'app_colors.dart' • lib/core/theme/app_theme.dart:7:8 • unused_import
+warning • Unused import: 'app_text_styles.dart' • lib/core/theme/app_theme.dart:8:8 • unused_import
+   info • 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre • lib/core/theme/app_theme.dart:25:7 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:50:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:63:40 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:78:15 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:120:21 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:124:21 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:128:21 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:132:21 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:141:32 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:151:40 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:155:13 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:165:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:166:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:171:31 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/core/theme/app_theme.dart:177:23 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:203:38 • deprecated_member_use
+   info • 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre • lib/core/theme/app_theme.dart:223:7 • deprecated_member_use
+  error • Directives must appear before any declarations • lib/core/theme/app_theme.dart:237:1 • directive_after_declaration
+warning • Duplicate import • lib/core/theme/app_theme.dart:237:8 • duplicate_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:329:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:330:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:331:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/theme/app_theme.dart:332:43 • deprecated_member_use
+  error • Directives must appear before any declarations • lib/core/theme/app_theme.dart:343:1 • directive_after_declaration
+warning • Duplicate import • lib/core/theme/app_theme.dart:343:8 • duplicate_import
+  error • Directives must appear before any declarations • lib/core/theme/app_theme.dart:344:1 • directive_after_declaration
+warning • Duplicate import • lib/core/theme/app_theme.dart:344:8 • duplicate_import
+warning • Unused import: 'app_colors.dart' • lib/core/theme/app_theme.dart:344:8 • unused_import
+warning • Unused import: 'package:flutter/foundation.dart' • lib/features/avatar/models/expert_personality.dart:5:8 • unused_import
+warning • This default clause is covered by the previous cases • lib/features/avatar/models/expert_personality.dart:357:7 • unreachable_switch_default
+  error • Invalid constant value • lib/features/avatar/providers/avatar_state_provider.dart:71:45 • invalid_constant
+  error • Invalid constant value • lib/features/avatar/providers/avatar_state_provider.dart:145:13 • invalid_constant
+  error • The argument type 'ExpertEmotion' can't be assigned to the parameter type 'AvatarEmotion?'.  • lib/features/avatar/providers/avatar_state_provider.dart:246:25 • argument_type_not_assignable
+  error • Undefined class 'ConversationContext' • lib/features/avatar/providers/conversation_provider.dart:472:3 • undefined_class
+  error • The method 'ConversationContext' isn't defined for the type 'ConversationNotifier' • lib/features/avatar/providers/conversation_provider.dart:474:12 • undefined_method
+warning • Unused import: '../../../shared/widgets/responsive_layout.dart' • lib/features/avatar/screens/avatar_home_screen.dart:12:8 • unused_import
+warning • Unused import: '../widgets/avatar_status_indicator.dart' • lib/features/avatar/screens/avatar_home_screen.dart:16:8 • unused_import
+warning • Unused import: '../widgets/voice_input_button.dart' • lib/features/avatar/screens/avatar_home_screen.dart:17:8 • unused_import
+  error • The method 'ResponsiveLayout' isn't defined for the type '_AvatarHomeScreenState' • lib/features/avatar/screens/avatar_home_screen.dart:77:13 • undefined_method
+  error • The argument type 'AvatarState (where AvatarState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/avatar_state_provider.dart)' can't be assigned to the parameter type 'AvatarState (where AvatarState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/screens/avatar_home_screen.dart)'.  • lib/features/avatar/screens/avatar_home_screen.dart:78:36 • argument_type_not_assignable
+  error • The argument type 'AvatarState (where AvatarState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/avatar_state_provider.dart)' can't be assigned to the parameter type 'AvatarState (where AvatarState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/screens/avatar_home_screen.dart)'.  • lib/features/avatar/screens/avatar_home_screen.dart:79:36 • argument_type_not_assignable
+  error • The argument type 'AvatarState (where AvatarState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/avatar_state_provider.dart)' can't be assigned to the parameter type 'AvatarState (where AvatarState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/screens/avatar_home_screen.dart)'.  • lib/features/avatar/screens/avatar_home_screen.dart:80:38 • argument_type_not_assignable
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:166:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:168:54 • deprecated_member_use
+  error • The method 'AvatarStatusIndicator' isn't defined for the type '_AvatarHomeScreenState' • lib/features/avatar/screens/avatar_home_screen.dart:174:11 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:234:44 • deprecated_member_use
+  error • The argument type 'AvatarStateType (where AvatarStateType is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/screens/avatar_home_screen.dart)' can't be assigned to the parameter type 'AvatarStateType (where AvatarStateType is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/avatar_state_provider.dart)'.  • lib/features/avatar/screens/avatar_home_screen.dart:246:24 • argument_type_not_assignable
+  error • The argument type 'AvatarEmotion' can't be assigned to the parameter type 'ExpertEmotion'.  • lib/features/avatar/screens/avatar_home_screen.dart:248:26 • argument_type_not_assignable
+   info • Use a 'SizedBox' to add whitespace to a layout • lib/features/avatar/screens/avatar_home_screen.dart:275:12 • sized_box_for_whitespace
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:297:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:318:33 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/screens/avatar_home_screen.dart:331:17 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/screens/avatar_home_screen.dart:334:26 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/screens/avatar_home_screen.dart:336:33 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:368:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:370:52 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/screens/avatar_home_screen.dart:375:11 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/screens/avatar_home_screen.dart:396:52 • deprecated_member_use
+  error • Invalid constant value • lib/features/avatar/screens/avatar_home_screen.dart:459:45 • invalid_constant
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:155:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:163:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:171:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:179:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:185:12 • prefer_const_constructors
+   info • Invalid regular expression syntax • lib/features/avatar/services/expert_personality_engine.dart:198:38 • valid_regexps
+  error • Expected to find ',' • lib/features/avatar/services/expert_personality_engine.dart:198:57 • expected_token
+  error • Too many positional arguments: 1 expected, but 3 found • lib/features/avatar/services/expert_personality_engine.dart:198:57 • extra_positional_arguments_could_be_named
+  error • Undefined name 't' • lib/features/avatar/services/expert_personality_engine.dart:198:57 • undefined_identifier
+  error • Expected to find ',' • lib/features/avatar/services/expert_personality_engine.dart:198:59 • expected_token
+  error • Undefined name 'understand' • lib/features/avatar/services/expert_personality_engine.dart:198:59 • undefined_identifier
+  error • Undefined name 'unclear' • lib/features/avatar/services/expert_personality_engine.dart:198:70 • undefined_identifier
+  error • Undefined name 'complex' • lib/features/avatar/services/expert_personality_engine.dart:198:78 • undefined_identifier
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:198:86 • missing_identifier
+  error • Expected to find ')' • lib/features/avatar/services/expert_personality_engine.dart:198:86 • expected_token
+  error • Expected to find ';' • lib/features/avatar/services/expert_personality_engine.dart:198:86 • expected_token
+  error • Expected to find ';' • lib/features/avatar/services/expert_personality_engine.dart:198:87 • expected_token
+  error • Undefined name 'b' • lib/features/avatar/services/expert_personality_engine.dart:198:87 • undefined_identifier
+  error • Expected to find ';' • lib/features/avatar/services/expert_personality_engine.dart:198:88 • expected_token
+  error • Unterminated string literal • lib/features/avatar/services/expert_personality_engine.dart:198:93 • unterminated_string_literal
+  error • Expected a class member • lib/features/avatar/services/expert_personality_engine.dart:203:5 • expected_class_member
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:203:8 • missing_identifier
+   info • Use the generic function type syntax to declare the parameter '' • lib/features/avatar/services/expert_personality_engine.dart:203:9 • use_function_type_syntax_for_parameters
+  error • Undefined class 'contains' • lib/features/avatar/services/expert_personality_engine.dart:203:9 • undefined_class
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:203:30 • missing_identifier
+   info • The variable name 'RegExp' isn't a lowerCamelCase identifier • lib/features/avatar/services/expert_personality_engine.dart:203:31 • non_constant_identifier_names
+   info • Use the generic function type syntax to declare the parameter 'RegExp' • lib/features/avatar/services/expert_personality_engine.dart:203:31 • use_function_type_syntax_for_parameters
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:203:38 • missing_identifier
+  error • Expected a class member • lib/features/avatar/services/expert_personality_engine.dart:208:5 • expected_class_member
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:208:8 • missing_identifier
+   info • Use the generic function type syntax to declare the parameter '' • lib/features/avatar/services/expert_personality_engine.dart:208:9 • use_function_type_syntax_for_parameters
+  error • Undefined class 'contains' • lib/features/avatar/services/expert_personality_engine.dart:208:9 • undefined_class
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:208:30 • missing_identifier
+   info • The variable name 'RegExp' isn't a lowerCamelCase identifier • lib/features/avatar/services/expert_personality_engine.dart:208:31 • non_constant_identifier_names
+   info • Use the generic function type syntax to declare the parameter 'RegExp' • lib/features/avatar/services/expert_personality_engine.dart:208:31 • use_function_type_syntax_for_parameters
+  error • Expected an identifier • lib/features/avatar/services/expert_personality_engine.dart:208:38 • missing_identifier
+  error • Expected a class member • lib/features/avatar/services/expert_personality_engine.dart:212:5 • expected_class_member
+  error • Methods must have an explicit list of parameters • lib/features/avatar/services/expert_personality_engine.dart:212:12 • missing_method_parameters
+  error • The name of a constructor must match the name of the enclosing class • lib/features/avatar/services/expert_personality_engine.dart:212:12 • invalid_constructor_name
+  error • Undefined name '_personality' • lib/features/avatar/services/expert_personality_engine.dart:252:19 • undefined_identifier
+  error • Undefined name '_random' • lib/features/avatar/services/expert_personality_engine.dart:338:27 • undefined_identifier
+  error • Undefined name '_random' • lib/features/avatar/services/expert_personality_engine.dart:348:9 • undefined_identifier
+  error • Undefined name '_random' • lib/features/avatar/services/expert_personality_engine.dart:349:25 • undefined_identifier
+  error • Undefined name '_random' • lib/features/avatar/services/expert_personality_engine.dart:355:37 • undefined_identifier
+  error • There's no constant named 'professional' in 'ExpertEmotion' • lib/features/avatar/services/expert_personality_engine.dart:375:26 • undefined_enum_constant
+  error • Undefined name '_context' • lib/features/avatar/services/expert_personality_engine.dart:388:12 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:414:12 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:453:16 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:461:16 • prefer_const_constructors
+warning • This default clause is covered by the previous cases • lib/features/avatar/services/expert_personality_engine.dart:469:7 • unreachable_switch_default
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/services/expert_personality_engine.dart:470:16 • prefer_const_constructors
+  error • Expected a method, getter, setter or operator declaration • lib/features/avatar/services/expert_personality_engine.dart:479:1 • expected_executable
+  error • There's no constant named 'celebrating' in 'ExpertEmotion' • lib/features/avatar/widgets/avatar_3d_display.dart:162:26 • undefined_enum_constant
+   info • Use a 'SizedBox' to add whitespace to a layout • lib/features/avatar/widgets/avatar_3d_display.dart:190:14 • sized_box_for_whitespace
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/avatar_3d_display.dart:226:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/avatar_3d_display.dart:227:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/avatar_3d_display.dart:369:31 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/avatar_3d_display.dart:375:20 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/avatar_3d_display.dart:377:27 • prefer_const_constructors
+warning • This default clause is covered by the previous cases • lib/features/avatar/widgets/avatar_3d_display.dart:404:7 • unreachable_switch_default
+  error • There's no constant named 'celebrating' in 'ExpertEmotion' • lib/features/avatar/widgets/avatar_3d_display.dart:418:26 • undefined_enum_constant
+  error • There's no constant named 'celebrating' in 'ExpertEmotion' • lib/features/avatar/widgets/avatar_3d_display.dart:433:26 • undefined_enum_constant
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/avatar_3d_display.dart:435:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/avatar_3d_display.dart:441:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/avatar_3d_display.dart:468:30 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:96:19 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:123:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:126:37 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:133:11 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:147:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:189:11 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:260:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:263:16 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:285:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:368:33 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:394:9 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:436:11 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:476:11 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:479:20 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:494:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:526:54 • deprecated_member_use
+warning • This default clause is covered by the previous cases • lib/features/avatar/widgets/conversation_history.dart:567:7 • unreachable_switch_default
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:575:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:577:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:579:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:581:32 • deprecated_member_use
+warning • This default clause is covered by the previous cases • lib/features/avatar/widgets/conversation_history.dart:582:7 • unreachable_switch_default
+warning • This default clause is covered by the previous cases • lib/features/avatar/widgets/conversation_history.dart:615:7 • unreachable_switch_default
+  error • Directives must appear before any declarations • lib/features/avatar/widgets/conversation_history.dart:630:1 • directive_after_declaration
+warning • Duplicate import • lib/features/avatar/widgets/conversation_history.dart:630:8 • duplicate_import
+  error • Directives must appear before any declarations • lib/features/avatar/widgets/conversation_history.dart:631:1 • directive_after_declaration
+  error • Target of URI doesn't exist: '../../core/theme/app_colors.dart' • lib/features/avatar/widgets/conversation_history.dart:631:8 • uri_does_not_exist
+  error • Directives must appear before any declarations • lib/features/avatar/widgets/conversation_history.dart:632:1 • directive_after_declaration
+  error • Target of URI doesn't exist: '../../core/theme/app_text_styles.dart' • lib/features/avatar/widgets/conversation_history.dart:632:8 • uri_does_not_exist
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:699:44 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:724:25 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:728:25 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_history.dart:732:25 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_history.dart:736:60 • deprecated_member_use
+warning • Unused import: '../../../shared/widgets/custom_text_field.dart' • lib/features/avatar/widgets/conversation_interface.dart:9:8 • unused_import
+warning • Unused import: '../models/conversation_message.dart' • lib/features/avatar/widgets/conversation_interface.dart:11:8 • unused_import
+warning • Unused import: 'voice_input_button.dart' • lib/features/avatar/widgets/conversation_interface.dart:12:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:100:54 • deprecated_member_use
+  error • The argument type 'ConversationState (where ConversationState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/conversation_provider.dart)' can't be assigned to the parameter type 'ConversationState (where ConversationState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/widgets/conversation_interface.dart)'.  • lib/features/avatar/widgets/conversation_interface.dart:106:38 • argument_type_not_assignable
+  error • The argument type 'ConversationState (where ConversationState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/conversation_provider.dart)' can't be assigned to the parameter type 'ConversationState (where ConversationState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/widgets/conversation_interface.dart)'.  • lib/features/avatar/widgets/conversation_interface.dart:110:48 • argument_type_not_assignable
+  error • The argument type 'ConversationState (where ConversationState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/providers/conversation_provider.dart)' can't be assigned to the parameter type 'ConversationState (where ConversationState is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/widgets/conversation_interface.dart)'.  • lib/features/avatar/widgets/conversation_interface.dart:114:34 • argument_type_not_assignable
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:128:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:137:40 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_interface.dart:164:19 • prefer_const_constructors
+  error • The argument type 'List<ConversationMessage> (where ConversationMessage is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/widgets/conversation_interface.dart)' can't be assigned to the parameter type 'List<ConversationMessage> (where ConversationMessage is defined in /Users/liborballaty/LocalProjects/GitHubProjectsDocuments/ArionComply-WebPrototype/flutter_web/lib/features/avatar/models/conversation_message.dart)'.  • lib/features/avatar/widgets/conversation_interface.dart:176:17 • argument_type_not_assignable
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:189:51 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:193:33 • deprecated_member_use
+  error • The method 'VoiceInputButton' isn't defined for the type '_ConversationInterfaceState' • lib/features/avatar/widgets/conversation_interface.dart:212:15 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:265:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:266:55 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:291:58 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:295:58 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_interface.dart:299:23 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/avatar/widgets/conversation_interface.dart:333:34 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/avatar/widgets/conversation_interface.dart:346:24 • prefer_const_constructors
+warning • The value of the local variable 'embedding' isn't used • lib/features/embedding/providers/embedding_provider.dart:364:9 • unused_local_variable
+  error • Target of URI doesn't exist: '../../../core/theme/app_colors.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:9:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../../../core/app/app_config.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:10:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../../avatar/screens/avatar_home_screen.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:11:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../../framework/screens/framework_selection_screen.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:12:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../widgets/embed_header.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:13:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../widgets/lead_capture_form.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:14:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../providers/embedding_provider.dart' • lib/features/features/embedding/screens/embedded_widget_screen.dart:15:8 • uri_does_not_exist
+  error • Undefined name 'AppConfig' • lib/features/features/embedding/screens/embedded_widget_screen.dart:42:5 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:48:14 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:57:38 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:60:24 • undefined_identifier
+  error • The method 'FrameworkSelectionScreen' isn't defined for the type '_EmbeddedWidgetScreenState' • lib/features/features/embedding/screens/embedded_widget_screen.dart:94:12 • undefined_method
+  error • The method 'AvatarHomeScreen' isn't defined for the type '_EmbeddedWidgetScreenState' • lib/features/features/embedding/screens/embedded_widget_screen.dart:106:14 • undefined_method
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:119:16 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:121:34 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:144:14 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:150:14 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:155:18 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:162:14 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:163:14 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:168:14 • undefined_identifier
+  error • Undefined name 'embeddingProvider' • lib/features/features/embedding/screens/embedded_widget_screen.dart:176:14 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:199:16 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:201:37 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:215:26 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:223:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:238:24 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/features/embedding/screens/embedded_widget_screen.dart:295:22 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/features/embedding/screens/embedded_widget_screen.dart:309:31 • prefer_const_constructors
+  error • Expected to find ';' • lib/features/features/embedding/screens/embedded_widget_screen.dart:309:46 • expected_token
+  error • Expected to find ')' • lib/features/features/embedding/screens/embedded_widget_screen.dart:309:47 • expected_token
+  error • Expected to find ']' • lib/features/features/embedding/screens/embedded_widget_screen.dart:309:47 • expected_token
+  error • Expected to find '}' • lib/features/features/embedding/screens/embedded_widget_screen.dart:309:47 • expected_token
+  error • Target of URI doesn't exist: 'core/app/app.dart' • lib/main.dart:10:8 • uri_does_not_exist
+   info • Use 'const' with the constructor to improve performance • lib/main.dart:28:5 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/main.dart:29:14 • prefer_const_constructors
+  error • Directives must appear before any declarations • lib/main.dart:56:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/main.dart:57:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/main.dart:59:1 • directive_after_declaration
+  error • Target of URI doesn't exist: '../theme/app_theme.dart' • lib/main.dart:59:8 • uri_does_not_exist
+  error • Directives must appear before any declarations • lib/main.dart:60:1 • directive_after_declaration
+  error • Target of URI doesn't exist: '../routing/app_router.dart' • lib/main.dart:60:8 • uri_does_not_exist
+  error • Undefined name 'AppTheme' • lib/main.dart:72:14 • undefined_identifier
+  error • Undefined name 'AppTheme' • lib/main.dart:73:18 • undefined_identifier
+  error • Undefined name 'AppRouter' • lib/main.dart:77:21 • undefined_identifier
+  error • Directives must appear before any declarations • lib/main.dart:170:1 • directive_after_declaration
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/app_loading_overlay.dart:31:52 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/app_loading_overlay.dart:40:43 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/shared/app_loading_overlay.dart:49:21 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/shared/app_loading_overlay.dart:50:35 • prefer_const_constructors
+  error • Directives must appear before any declarations • lib/shared/app_loading_overlay.dart:76:1 • directive_after_declaration
+warning • Duplicate import • lib/shared/app_loading_overlay.dart:76:8 • duplicate_import
+  error • Directives must appear before any declarations • lib/shared/app_loading_overlay.dart:77:1 • directive_after_declaration
+  error • Directives must appear before any declarations • lib/shared/app_loading_overlay.dart:79:1 • directive_after_declaration
+warning • Duplicate import • lib/shared/app_loading_overlay.dart:79:8 • duplicate_import
+   info • Use 'const' with the constructor to improve performance • lib/shared/app_loading_overlay.dart:139:15 • prefer_const_constructors
+   info • Unnecessary escape in string literal • lib/shared/utils/validation_utils.dart:8:93 • unnecessary_string_escapes
+  error • Expected an identifier • lib/shared/utils/validation_utils.dart:8:143 • missing_identifier
+  error • A negation operand must have a static type of 'bool' • lib/shared/utils/validation_utils.dart:79:10 • non_bool_negation_expression
+   info • Invalid regular expression syntax • lib/shared/utils/validation_utils.dart:79:17 • valid_regexps
+  error • Expected an identifier • lib/shared/utils/validation_utils.dart:79:33 • missing_identifier
+  error • Expected to find ')' • lib/shared/utils/validation_utils.dart:79:33 • expected_token
+  error • Expected to find ';' • lib/shared/utils/validation_utils.dart:79:34 • expected_token
+  error • Expected an identifier • lib/shared/utils/validation_utils.dart:79:35 • missing_identifier
+  error • Unexpected text ';' • lib/shared/utils/validation_utils.dart:79:35 • unexpected_token
+  error • Expected an identifier • lib/shared/utils/validation_utils.dart:79:36 • missing_identifier
+  error • Expected to find ';' • lib/shared/utils/validation_utils.dart:79:37 • expected_token
+  error • Undefined name '$' • lib/shared/utils/validation_utils.dart:79:37 • undefined_identifier
+  error • Expected to find ';' • lib/shared/utils/validation_utils.dart:79:38 • expected_token
+  error • Unterminated string literal • lib/shared/utils/validation_utils.dart:79:60 • unterminated_string_literal
+  error • Expected a class member • lib/shared/utils/validation_utils.dart:83:5 • expected_class_member
+  error • Expected a class member • lib/shared/utils/validation_utils.dart:83:12 • expected_class_member
+  error • Expected a class member • lib/shared/utils/validation_utils.dart:83:16 • expected_class_member
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:87:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:107:3 • extraneous_modifier
+  error • Undefined name '_phoneRegExp' • lib/shared/utils/validation_utils.dart:114:10 • undefined_identifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:122:3 • extraneous_modifier
+  error • Undefined name '_urlRegExp' • lib/shared/utils/validation_utils.dart:129:10 • undefined_identifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:137:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:161:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:187:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:208:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:227:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:242:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:251:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:264:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:277:3 • extraneous_modifier
+  error • The function 'validateEmail' isn't defined • lib/shared/utils/validation_utils.dart:288:24 • undefined_function
+  error • The function 'validateCompanyName' isn't defined • lib/shared/utils/validation_utils.dart:294:26 • undefined_function
+  error • The function 'validateName' isn't defined • lib/shared/utils/validation_utils.dart:301:30 • undefined_function
+  error • The function 'validateName' isn't defined • lib/shared/utils/validation_utils.dart:308:29 • undefined_function
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:332:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:351:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:364:3 • extraneous_modifier
+  error • Can't have modifier 'static' here • lib/shared/utils/validation_utils.dart:374:3 • extraneous_modifier
+  error • Expected a method, getter, setter or operator declaration • lib/shared/utils/validation_utils.dart:386:1 • expected_executable
+   info • The imported package 'flutter_web' isn't a dependency of the importing package • test/widget_test.dart:11:8 • depend_on_referenced_packages
+  error • Target of URI doesn't exist: 'package:flutter_web/main.dart' • test/widget_test.dart:11:8 • uri_does_not_exist
+  error • The name 'MyApp' isn't a class • test/widget_test.dart:16:35 • creation_with_non_type
+

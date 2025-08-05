@@ -23,6 +23,13 @@ class ConversationState {
   final String? currentTranscript;
   final String? lastError;
   final DateTime? lastActivity;
+  
+  // ADD these new properties:
+  final String? currentFramework;        // Current selected framework
+  final int? assessmentStep;             // Current assessment step
+  final double assessmentProgress;       // Assessment completion (0.0 to 1.0)
+  final bool isDemoMode;                 // Whether in demo presentation mode
+  final Map<String, dynamic> demoState; // Demo-specific state
 
   const ConversationState({
     this.messages = const [],
@@ -33,9 +40,15 @@ class ConversationState {
     this.currentTranscript,
     this.lastError,
     this.lastActivity,
+    // ADD these with defaults:
+    this.currentFramework,
+    this.assessmentStep,
+    this.assessmentProgress = 0.0,
+    this.isDemoMode = false,
+    this.demoState = const {},
   });
 
-  ConversationState copyWith({
+ConversationState copyWith({
     List<ConversationMessage>? messages,
     bool? isProcessing,
     bool? isListening,
@@ -44,6 +57,12 @@ class ConversationState {
     String? currentTranscript,
     String? lastError,
     DateTime? lastActivity,
+    // ADD these parameters:
+    String? currentFramework,
+    int? assessmentStep,
+    double? assessmentProgress,
+    bool? isDemoMode,
+    Map<String, dynamic>? demoState,
   }) {
     return ConversationState(
       messages: messages ?? this.messages,
@@ -54,6 +73,12 @@ class ConversationState {
       currentTranscript: currentTranscript ?? this.currentTranscript,
       lastError: lastError ?? this.lastError,
       lastActivity: lastActivity ?? this.lastActivity,
+      // ADD these assignments:
+      currentFramework: currentFramework ?? this.currentFramework,
+      assessmentStep: assessmentStep ?? this.assessmentStep,
+      assessmentProgress: assessmentProgress ?? this.assessmentProgress,
+      isDemoMode: isDemoMode ?? this.isDemoMode,
+      demoState: demoState ?? this.demoState,
     );
   }
 
@@ -80,6 +105,21 @@ class ConversationState {
   bool get isActive => isProcessing || isListening;
   
   bool get shouldShowWelcome => messages.isEmpty;
+
+    /// Whether user has selected a framework
+  bool get hasFrameworkSelected => currentFramework != null;
+  
+  /// Whether assessment is in progress
+  bool get isAssessmentActive => assessmentStep != null && assessmentStep! > 0;
+  
+  /// Assessment progress percentage for display
+  int get assessmentPercentage => (assessmentProgress * 100).round();
+  
+  /// Whether conversation has meaningful content (not just welcome)
+  bool get hasSubstantiveConversation => messages.length > 2;
+  
+  /// Current demo step if in demo mode
+  String? get currentDemoStep => isDemoMode ? demoState['current_step'] : null;
 }
 
 /// Conversation state notifier
@@ -516,4 +556,30 @@ final messageCountProvider = Provider<int>((ref) {
 final conversationErrorProvider = Provider<String?>((ref) {
   final conversation = ref.watch(conversationProvider);
   return conversation.lastError;
+});
+
+/// Provider for last conversation error
+final conversationErrorProvider = Provider<String?>((ref) {
+  final conversation = ref.watch(conversationProvider);
+  return conversation.lastError;
+});
+
+// ADD THE NEW PROVIDERS HERE ⬇️
+
+/// Provider for current selected framework
+final currentFrameworkProvider = Provider<String?>((ref) {
+  final conversation = ref.watch(conversationProvider);
+  return conversation.currentFramework;
+});
+
+/// Provider for assessment progress
+final assessmentProgressProvider = Provider<double>((ref) {
+  final conversation = ref.watch(conversationProvider);
+  return conversation.assessmentProgress;
+});
+
+/// Provider for demo mode state
+final isDemoModeProvider = Provider<bool>((ref) {
+  final conversation = ref.watch(conversationProvider);
+  return conversation.isDemoMode;
 });

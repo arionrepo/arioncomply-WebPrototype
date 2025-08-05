@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 
+
 import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/responsive_layout.dart';
 import '../providers/avatar_state_provider.dart';

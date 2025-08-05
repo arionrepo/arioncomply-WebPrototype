@@ -109,12 +109,3 @@ flutter:
           weight: 600
         - asset: assets/fonts/Inter-Bold.ttf
           weight: 700
-
-# ===== FLUTTER WEB CONFIGURATION =====
-# Optimizations for web deployment and embedding
-flutter:
-  web:
-    # Enable WASM compilation for better performance
-    wasm: true
-    # Optimize for embedding in iframes
-    renderer: canvaskit

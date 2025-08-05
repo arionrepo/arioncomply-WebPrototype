@@ -1,6 +1,8 @@
 // FILE PATH: lib/features/avatar/models/avatar_state.dart
 // Avatar state models - Missing models referenced in avatar_status_indicator.dart
 
+import '../models/avatar_state.dart';
+
 /// Avatar current operational state
 enum AvatarCurrentState {
   idle,

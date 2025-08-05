@@ -2,8 +2,9 @@
 // Missing types and enums referenced throughout the project
 
 import 'package:flutter/material.dart';
+import '../models/avatar_state.dart';
 
-/// Haptic feedback types (simplified version)
+// Haptic feedback types (simplified version)
 enum HapticFeedbackType {
   lightImpact,
   mediumImpact,

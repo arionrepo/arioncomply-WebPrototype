@@ -12,6 +12,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../shared/widgets/responsive_layout.dart';
 import '../providers/avatar_state_provider.dart'; // This contains the real AvatarState
 import '../widgets/avatar_3d_display.dart';
+import '../../../core/models/emotion_types.dart';
 import '../widgets/conversation_interface.dart';
 import '../widgets/avatar_status_indicator.dart';
 import '../widgets/voice_input_button.dart';

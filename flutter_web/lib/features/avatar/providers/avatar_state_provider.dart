@@ -17,6 +17,8 @@ import '../models/conversation_context.dart';
 import '../services/expert_personality_engine.dart';
 import '../../../core/services/audio_service.dart';
 
+import '../models/avatar_state.dart';
+
 /// Avatar state for the interface
 enum AvatarStateType {
   idle,

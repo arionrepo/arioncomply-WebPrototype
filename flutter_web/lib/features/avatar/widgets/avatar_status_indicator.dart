@@ -10,6 +10,7 @@ import '../../../core/theme/app_text_styles.dart';
 import '../models/avatar_state.dart';
 import '../providers/avatar_state_provider.dart';
 
+
 /// Avatar Status Indicator - Shows current avatar state and mood
 /// Provides visual feedback about what the avatar is doing
 class AvatarStatusIndicator extends ConsumerStatefulWidget {

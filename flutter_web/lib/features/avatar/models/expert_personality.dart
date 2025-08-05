@@ -3,6 +3,7 @@
 // Extracted from expert_personality_engine.dart usage patterns
 
 import 'package:flutter/foundation.dart';
+import '../../../core/models/emotion_types.dart';
 
 /// Expert personality types for different user preferences
 enum ExpertPersonalityType {

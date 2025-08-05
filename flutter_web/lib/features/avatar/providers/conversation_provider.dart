@@ -446,6 +446,257 @@ class ConversationNotifier extends StateNotifier<ConversationState> {
     state = state.copyWith(messages: updatedMessages);
   }
 
+  // ========== DEMO METHODS GROUP ==========
+
+/// Initialize demo mode with scripted interactions
+void initializeDemoMode() {
+  state = state.copyWith(
+    messages: [],
+    isProcessing: false,
+    showSuggestions: false,
+    lastActivity: DateTime.now(),
+  );
+  
+  if (kDebugMode) {
+    print('🎬 Demo mode initialized');
+  }
+}
+
+/// Execute demo introduction step
+Future<void> executeDemoIntroduction() async {
+  await _addDemoMessage(
+    "Hi! I'm Alex, your AI compliance expert. I'll help you navigate complex compliance requirements with confidence and clarity.",
+    MessageType.avatar,
+    {'demo_step': 'introduction', 'duration': 5}
+  );
+}
+
+/// Execute demo framework discovery step
+Future<void> executeDemoFrameworkDiscovery() async {
+  await _addDemoMessage(
+    "Let me understand your business first. Are you a SaaS company handling customer data? Based on your industry, I'd recommend starting with SOC 2 compliance.",
+    MessageType.avatar,
+    {'demo_step': 'framework_discovery', 'framework': 'soc2'}
+  );
+  
+  // Simulate user response
+  await Future.delayed(const Duration(seconds: 2));
+  await _addDemoMessage(
+    "Yes, we're a SaaS company with about 50 customers.",
+    MessageType.user,
+    {'demo_response': true}
+  );
+}
+
+/// Execute demo conversational assessment step
+Future<void> executeDemoAssessment() async {
+  await _addDemoMessage(
+    "Perfect! Let's start with your current security practices. Do you have multi-factor authentication enabled for all employees?",
+    MessageType.avatar,
+    {'demo_step': 'assessment', 'question_type': 'security'}
+  );
+  
+  await Future.delayed(const Duration(seconds: 1));
+  await _addDemoMessage(
+    "Yes, we use Google Workspace with MFA required.",
+    MessageType.user,
+    {'demo_response': true}
+  );
+}
+
+/// Execute demo gap analysis step
+Future<void> executeDemoGapAnalysis() async {
+  await _addDemoMessage(
+    "Great! I've identified 3 areas that need attention: access reviews, data classification, and incident response procedures. Here's your priority roadmap...",
+    MessageType.avatar,
+    {'demo_step': 'gap_analysis', 'gaps_found': 3}
+  );
+}
+
+/// Execute demo recommendations step
+Future<void> executeDemoRecommendations() async {
+  await _addDemoMessage(
+    "I've created a personalized action plan with specific templates and timelines. You can implement these changes over the next 30 days.",
+    MessageType.avatar,
+    {'demo_step': 'recommendations', 'timeline': '30_days'}
+  );
+}
+
+/// Execute demo monitoring step
+Future<void> executeDemoMonitoring() async {
+  await _addDemoMessage(
+    "I'll help you maintain compliance with automated monitoring and quarterly check-ins. Your compliance program will stay current with evolving requirements.",
+    MessageType.avatar,
+    {'demo_step': 'monitoring', 'automation': true}
+  );
+}
+
+/// Reset demo mode to initial state
+Future<void> resetDemoMode() async {
+  state = state.copyWith(
+    messages: [],
+    isProcessing: false,
+    showSuggestions: true,
+    lastActivity: DateTime.now(),
+  );
+}
+
+
+// ========== FRAMEWORK METHODS GROUP ==========
+
+/// Start framework discovery conversation
+Future<void> startFrameworkDiscovery() async {
+  await _addAvatarMessage(
+    "I'd love to help you choose the right compliance framework! Tell me about your business - what industry are you in and what type of data do you handle?",
+    {'action': 'framework_discovery'}
+  );
+}
+
+/// Introduce framework selection process
+Future<void> introduceFrameworkSelection() async {
+  await _addAvatarMessage(
+    "Let's find the perfect compliance framework for your business. I'll ask a few questions to understand your needs and recommend the best path forward.",
+    {'action': 'framework_introduction'}
+  );
+}
+
+/// Confirm framework choice with context
+Future<void> confirmFrameworkChoice({
+  required String framework, 
+  String? source
+}) async {
+  final frameworkName = _getFrameworkDisplayName(framework);
+  
+  state = state.copyWith(
+    currentFramework: framework,
+    lastActivity: DateTime.now(),
+  );
+  
+  String message = "Excellent choice! $frameworkName is perfect for your needs.";
+  if (source != null) {
+    message += " I see you're interested in $frameworkName compliance - let's get started!";
+  }
+  
+  await _addAvatarMessage(
+    message + " Would you like to begin with a quick assessment to see where you stand?",
+    {'framework': framework, 'source': source, 'action': 'framework_confirmed'}
+  );
+}
+
+/// Reset framework selection
+Future<void> resetFrameworkSelection() async {
+  state = state.copyWith(
+    currentFramework: null,
+    showSuggestions: true,
+    lastActivity: DateTime.now(),
+  );
+  
+  await introduceFrameworkSelection();
+}
+
+// ========== ASSESSMENT METHODS GROUP ==========
+
+/// Start assessment for specific framework
+Future<void> startAssessment({required String framework, int step = 1}) async {
+  state = state.copyWith(
+    currentFramework: framework,
+    assessmentStep: step,
+    assessmentProgress: 0.0,
+    isProcessing: false,
+    lastActivity: DateTime.now(),
+  );
+  
+  final frameworkName = _getFrameworkDisplayName(framework);
+  await _addAvatarMessage(
+    "Let's begin your $frameworkName assessment! I'll guide you through each area with personalized questions. This usually takes about 15-20 minutes.",
+    {'assessment_started': true, 'framework': framework, 'step': step}
+  );
+  
+  // Start first assessment question
+  await _askNextAssessmentQuestion();
+}
+
+/// Pause current assessment
+Future<void> pauseAssessment() async {
+  state = state.copyWith(
+    isProcessing: false,
+    lastActivity: DateTime.now(),
+  );
+  
+  await _addAvatarMessage(
+    "Assessment paused. Your progress has been saved automatically. Just let me know when you're ready to continue!",
+    {'assessment_paused': true}
+  );
+}
+
+/// Save assessment progress
+Future<void> saveAssessmentProgress() async {
+  try {
+    final progressData = {
+      'framework': state.currentFramework,
+      'step': state.assessmentStep,
+      'progress': state.assessmentProgress,
+      'messages': state.messages.map((m) => {
+        'content': m.content,
+        'type': m.type.toString(),
+        'timestamp': m.timestamp.toIso8601String(),
+        'metadata': m.metadata,
+      }).toList(),
+      'saved_at': DateTime.now().toIso8601String(),
+    };
+    
+    await _storageService.saveDemoData('assessment_progress', progressData);
+    
+    if (kDebugMode) {
+      print('💾 Assessment progress saved');
+    }
+  } catch (e) {
+    if (kDebugMode) {
+      print('❌ Error saving assessment progress: $e');
+    }
+  }
+}
+
+// ========== CHAT METHODS GROUP ==========
+
+/// Initialize standalone chat mode
+Future<void> initializeStandaloneChat({String? context}) async {
+  state = state.copyWith(
+    isVoiceMode: false,
+    showSuggestions: true,
+    lastActivity: DateTime.now(),
+  );
+  
+  String welcomeMessage = "Hi! I'm your AI compliance expert. I can help you understand requirements, assess your readiness, and answer any compliance questions you have.";
+  
+  if (context != null) {
+    welcomeMessage += " I see you're interested in $context - let's dive in!";
+  }
+  
+  await _addAvatarMessage(
+    welcomeMessage,
+    {'chat_mode': 'standalone', 'context': context}
+  );
+}
+
+/// Clear conversation history
+Future<void> clearConversation() async {
+  state = state.copyWith(
+    messages: [],
+    isProcessing: false,
+    isListening: false,
+    currentTranscript: null,
+    lastError: null,
+    showSuggestions: true,
+    lastActivity: DateTime.now(),
+  );
+  
+  await _storageService.clearConversationHistory();
+  
+  if (kDebugMode) {
+    print('🧹 Conversation cleared');
+  }
+}
   // Private helper methods
 
   void _setupVoiceListeners() {
@@ -523,6 +774,82 @@ class ConversationNotifier extends StateNotifier<ConversationState> {
         .map((m) => m.content)
         .toList();
   }
+
+  // ========== NEW HELPER METHODS ==========
+
+/// Helper to add avatar message
+Future<void> _addAvatarMessage(String content, [Map<String, dynamic>? metadata]) async {
+  final message = ConversationMessage(
+    id: _uuid.v4(),
+    type: MessageType.avatar,
+    source: MessageSource.text,
+    content: content,
+    timestamp: DateTime.now(),
+    metadata: metadata ?? {},
+  );
+  
+  state = state.copyWith(
+    messages: [...state.messages, message],
+    lastActivity: DateTime.now(),
+  );
+  
+  await _saveConversationHistory();
+}
+
+/// Helper to add demo message with delay
+Future<void> _addDemoMessage(String content, MessageType type, [Map<String, dynamic>? metadata]) async {
+  state = state.copyWith(isProcessing: true);
+  
+  // Simulate thinking time
+  await Future.delayed(const Duration(milliseconds: 800));
+  
+  final message = ConversationMessage(
+    id: _uuid.v4(),
+    type: type,
+    source: MessageSource.text,
+    content: content,
+    timestamp: DateTime.now(),
+    metadata: metadata ?? {},
+  );
+  
+  state = state.copyWith(
+    messages: [...state.messages, message],
+    isProcessing: false,
+    lastActivity: DateTime.now(),
+  );
+}
+
+/// Get framework display name
+String _getFrameworkDisplayName(String frameworkId) {
+  final frameworks = {
+    'soc2': 'SOC 2',
+    'gdpr': 'GDPR',
+    'iso27001': 'ISO 27001',
+    'hipaa': 'HIPAA',
+    'pci-dss': 'PCI DSS',
+    'nist': 'NIST Cybersecurity Framework',
+  };
+  return frameworks[frameworkId] ?? frameworkId.toUpperCase();
+}
+
+/// Ask next assessment question based on current progress
+Future<void> _askNextAssessmentQuestion() async {
+  // Mock assessment questions - in production, this would be dynamic
+  final questions = [
+    "Let's start with access controls. Do you have multi-factor authentication enabled for all employees?",
+    "How do you currently manage user permissions and access reviews?",
+    "Tell me about your data handling practices. How do you classify and protect sensitive information?",
+    "What monitoring and logging systems do you have in place?",
+  ];
+  
+  final currentStep = state.assessmentStep ?? 1;
+  if (currentStep <= questions.length) {
+    await _addAvatarMessage(
+      questions[currentStep - 1],
+      {'assessment_question': true, 'step': currentStep}
+    );
+  }
+}
 }
 
 /// Provider for conversation state

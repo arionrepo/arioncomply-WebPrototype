@@ -1,0 +1,354 @@
+{
+  "documentTemplates": {
+    "policies": {
+      "information_security_policy": {
+        "title": "Information Security Policy",
+        "framework": ["soc2", "iso27001"],
+        "category": "Core Policy",
+        "description": "Foundational policy establishing the organization's commitment to information security",
+        "sections": [
+          {
+            "title": "1. Purpose",
+            "content": "This Information Security Policy establishes [COMPANY_NAME]'s commitment to protecting information assets and defines the framework for information security management across the organization."
+          },
+          {
+            "title": "2. Scope",
+            "content": "This policy applies to all employees, contractors, vendors, and third parties who have access to [COMPANY_NAME] information systems and data."
+          },
+          {
+            "title": "3. Information Security Objectives",
+            "content": "- Ensure confidentiality, integrity, and availability of information assets\n- Comply with applicable legal, regulatory, and contractual requirements\n- Maintain customer trust through demonstrated security practices\n- Enable business operations through secure information systems"
+          },
+          {
+            "title": "4. Roles and Responsibilities",
+            "content": "- Executive Management: Ultimate accountability for information security\n- IT Security Team: Implementation and monitoring of security controls\n- All Employees: Compliance with security policies and procedures"
+          },
+          {
+            "title": "5. Policy Review",
+            "content": "This policy will be reviewed annually or following significant changes to the business or threat environment."
+          }
+        ],
+        "variables": ["COMPANY_NAME", "EFFECTIVE_DATE", "REVIEW_DATE"]
+      },
+      "data_classification_policy": {
+        "title": "Data Classification Policy",
+        "framework": ["soc2", "iso27001", "gdpr"],
+        "category": "Data Protection",
+        "description": "Policy for classifying and handling different types of organizational data",
+        "sections": [
+          {
+            "title": "1. Purpose",
+            "content": "This policy establishes a framework for classifying information assets based on their sensitivity and implementing appropriate protection measures."
+          },
+          {
+            "title": "2. Data Classification Levels",
+            "content": "- PUBLIC: Information that can be freely shared\n- INTERNAL: Information for internal use only\n- CONFIDENTIAL: Sensitive information requiring special protection\n- RESTRICTED: Highly sensitive information with limited access"
+          },
+          {
+            "title": "3. Handling Requirements",
+            "content": "Each classification level has specific requirements for storage, transmission, access control, and disposal."
+          }
+        ],
+        "variables": ["COMPANY_NAME", "DATA_OFFICER", "CLASSIFICATION_LEVELS"]
+      },
+      "privacy_policy": {
+        "title": "Privacy Policy",
+        "framework": ["gdpr", "ccpa", "hipaa"],
+        "category": "Privacy",
+        "description": "Public-facing policy describing data collection and processing practices",
+        "sections": [
+          {
+            "title": "1. Information We Collect",
+            "content": "We collect personal information that you provide directly to us, information we collect automatically when you use our services, and information we receive from third parties."
+          },
+          {
+            "title": "2. How We Use Your Information",
+            "content": "We use your personal information to provide and improve our services, communicate with you, and comply with legal obligations."
+          },
+          {
+            "title": "3. Your Rights",
+            "content": "You have the right to access, correct, delete, or restrict processing of your personal information. You may also have the right to data portability and to object to processing."
+          },
+          {
+            "title": "4. Data Retention",
+            "content": "We retain personal information only as long as necessary for the purposes described in this policy or as required by law."
+          }
+        ],
+        "variables": ["COMPANY_NAME", "CONTACT_EMAIL", "DPO_EMAIL", "LEGAL_BASIS"]
+      }
+    },
+    "procedures": {
+      "incident_response_procedure": {
+        "title": "Security Incident Response Procedure",
+        "framework": ["soc2", "iso27001", "hipaa"],
+        "category": "Incident Management",
+        "description": "Step-by-step procedure for responding to security incidents",
+        "sections": [
+          {
+            "title": "1. Incident Identification",
+            "content": "- Monitor security alerts and reports\n- Validate potential incidents\n- Document initial findings"
+          },
+          {
+            "title": "2. Incident Classification",
+            "content": "- LOW: Minor incidents with limited impact\n- MEDIUM: Incidents affecting business operations\n- HIGH: Major incidents with significant impact\n- CRITICAL: Incidents threatening business continuity"
+          },
+          {
+            "title": "3. Response Actions",
+            "content": "- Contain the incident\n- Assess the scope and impact\n- Implement remediation measures\n- Document all actions taken"
+          },
+          {
+            "title": "4. Communication",
+            "content": "- Notify incident response team\n- Inform affected stakeholders\n- Report to regulatory authorities if required"
+          },
+          {
+            "title": "5. Recovery and Lessons Learned",
+            "content": "- Restore normal operations\n- Conduct post-incident review\n- Update procedures based on lessons learned"
+          }
+        ],
+        "variables": ["INCIDENT_TEAM", "ESCALATION_CONTACTS", "NOTIFICATION_REQUIREMENTS"]
+      },
+      "access_control_procedure": {
+        "title": "Access Control Management Procedure",
+        "framework": ["soc2", "iso27001", "pci"],
+        "category": "Access Management",
+        "description": "Procedure for managing user access to information systems",
+        "sections": [
+          {
+            "title": "1. Access Request Process",
+            "content": "- Submit formal access request\n- Manager approval required\n- IT security review\n- Access provisioning"
+          },
+          {
+            "title": "2. Access Review",
+            "content": "- Quarterly access reviews\n- Manager certification\n- Remove unnecessary access\n- Document review results"
+          },
+          {
+            "title": "3. Access Termination",
+            "content": "- Immediate access removal upon termination\n- Manager notification\n- Return of access credentials\n- Final access audit"
+          }
+        ],
+        "variables": ["APPROVAL_MANAGER", "IT_CONTACT", "REVIEW_FREQUENCY"]
+      }
+    },
+    "assessments": {
+      "risk_assessment_template": {
+        "title": "Information Security Risk Assessment",
+        "framework": ["iso27001", "soc2"],
+        "category": "Risk Management",
+        "description": "Template for conducting information security risk assessments",
+        "sections": [
+          {
+            "title": "1. Asset Identification",
+            "content": "List all information assets including:\n- Information systems\n- Data repositories\n- Network infrastructure\n- Applications\n- Personnel"
+          },
+          {
+            "title": "2. Threat Assessment",
+            "content": "Identify potential threats:\n- Cybersecurity threats\n- Physical threats\n- Human error\n- System failures\n- Natural disasters"
+          },
+          {
+            "title": "3. Vulnerability Analysis",
+            "content": "Assess vulnerabilities:\n- Technical vulnerabilities\n- Procedural weaknesses\n- Physical security gaps\n- Human factors"
+          },
+          {
+            "title": "4. Risk Calculation",
+            "content": "Risk = Threat x Vulnerability x Impact\n- Likelihood assessment\n- Impact analysis\n- Risk rating\n- Risk prioritization"
+          },
+          {
+            "title": "5. Risk Treatment",
+            "content": "Risk treatment options:\n- Accept the risk\n- Mitigate the risk\n- Transfer the risk\n- Avoid the risk"
+          }
+        ],
+        "variables": ["ASSESSMENT_DATE", "ASSESSOR_NAME", "REVIEW_DATE", "APPROVAL_AUTHORITY"]
+      },
+      "privacy_impact_assessment": {
+        "title": "Privacy Impact Assessment (PIA)",
+        "framework": ["gdpr", "ccpa"],
+        "category": "Privacy Assessment",
+        "description": "Template for assessing privacy impact of data processing activities",
+        "sections": [
+          {
+            "title": "1. Processing Description",
+            "content": "- Purpose of processing\n- Types of personal data\n- Categories of data subjects\n- Recipients of data\n- International transfers"
+          },
+          {
+            "title": "2. Necessity and Proportionality",
+            "content": "- Legal basis for processing\n- Necessity assessment\n- Proportionality analysis\n- Less intrusive alternatives"
+          },
+          {
+            "title": "3. Privacy Risk Assessment",
+            "content": "- Risk to rights and freedoms\n- Likelihood and severity\n- Risk mitigation measures\n- Residual risk evaluation"
+          },
+          {
+            "title": "4. Consultation and Approval",
+            "content": "- Stakeholder consultation\n- DPO review\n- Management approval\n- Supervisory authority consultation (if required)"
+          }
+        ],
+        "variables": ["PROCESSING_PURPOSE", "DATA_CONTROLLER", "DPO_NAME", "ASSESSMENT_DATE"]
+      }
+    },
+    "forms": {
+      "data_subject_request_form": {
+        "title": "Data Subject Rights Request Form",
+        "framework": ["gdpr", "ccpa"],
+        "category": "Privacy Rights",
+        "description": "Form for individuals to exercise their privacy rights",
+        "fields": [
+          {
+            "name": "full_name",
+            "type": "text",
+            "label": "Full Name",
+            "required": true
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "label": "Email Address",
+            "required": true
+          },
+          {
+            "name": "request_type",
+            "type": "select",
+            "label": "Type of Request",
+            "options": ["Access", "Rectification", "Erasure", "Portability", "Objection", "Restriction"],
+            "required": true
+          },
+          {
+            "name": "description",
+            "type": "textarea",
+            "label": "Description of Request",
+            "required": true
+          },
+          {
+            "name": "verification",
+            "type": "file",
+            "label": "Identity Verification Document",
+            "required": true
+          }
+        ]
+      },
+      "vendor_security_assessment": {
+        "title": "Vendor Security Assessment Form",
+        "framework": ["soc2", "iso27001"],
+        "category": "Third Party Management",
+        "description": "Assessment form for evaluating vendor security practices",
+        "sections": [
+          {
+            "title": "Company Information",
+            "fields": ["company_name", "contact_person", "services_provided"]
+          },
+          {
+            "title": "Security Certifications",
+            "fields": ["soc2_status", "iso27001_status", "other_certifications"]
+          },
+          {
+            "title": "Data Handling",
+            "fields": ["data_types_accessed", "data_location", "data_retention"]
+          },
+          {
+            "title": "Security Controls",
+            "fields": ["access_controls", "encryption", "monitoring", "incident_response"]
+          }
+        ]
+      }
+    }
+  },
+  "templateVariables": {
+    "common": {
+      "COMPANY_NAME": "Your Company Name",
+      "EFFECTIVE_DATE": "Current Date",
+      "REVIEW_DATE": "Annual Review Date",
+      "CONTACT_EMAIL": "privacy@company.com",
+      "DPO_EMAIL": "dpo@company.com"
+    },
+    "industries": {
+      "technology": {
+        "BUSINESS_TYPE": "technology services",
+        "DATA_TYPES": "customer data, technical data, usage analytics",
+        "PRIMARY_ASSETS": "software applications, customer databases, intellectual property"
+      },
+      "healthcare": {
+        "BUSINESS_TYPE": "healthcare services",
+        "DATA_TYPES": "protected health information, patient records, billing data",
+        "PRIMARY_ASSETS": "patient management systems, medical records, billing systems"
+      },
+      "financial": {
+        "BUSINESS_TYPE": "financial services",
+        "DATA_TYPES": "financial information, payment data, customer records",
+        "PRIMARY_ASSETS": "trading systems, customer databases, payment processing"
+      }
+    }
+  },
+  "complianceChecklists": {
+    "soc2_readiness": {
+      "title": "SOC 2 Readiness Checklist",
+      "framework": "soc2",
+      "items": [
+        {
+          "category": "Documentation",
+          "items": [
+            "Information Security Policy documented",
+            "Data Classification Policy established",
+            "Incident Response Procedure defined",
+            "Access Control Procedures documented"
+          ]
+        },
+        {
+          "category": "Technical Controls",
+          "items": [
+            "Multi-factor authentication implemented",
+            "Encryption in transit and at rest",
+            "Network segmentation in place",
+            "Vulnerability management program"
+          ]
+        },
+        {
+          "category": "Operational Controls",
+          "items": [
+            "Background checks for employees",
+            "Security awareness training program",
+            "Regular access reviews conducted",
+            "Change management process"
+          ]
+        }
+      ]
+    },
+    "gdpr_compliance": {
+      "title": "GDPR Compliance Checklist",
+      "framework": "gdpr",
+      "items": [
+        {
+          "category": "Legal Basis",
+          "items": [
+            "Legal basis identified for all processing",
+            "Consent mechanisms implemented where required",
+            "Legitimate interests assessments completed"
+          ]
+        },
+        {
+          "category": "Individual Rights",
+          "items": [
+            "Data subject request process established",
+            "Right to erasure procedures implemented",
+            "Data portability capabilities available",
+            "Objection handling process defined"
+          ]
+        },
+        {
+          "category": "Documentation",
+          "items": [
+            "Privacy policy published and maintained",
+            "Records of processing activities documented",
+            "Data protection impact assessments conducted",
+            "Data breach notification procedures established"
+          ]
+        }
+      ]
+    }
+  },
+  "sampleDocuments": {
+    "completed_policy_example": {
+      "title": "Sample Information Security Policy",
+      "framework": "soc2",
+      "content": "INFORMATION SECURITY POLICY\n\nCompany: TechCorp Solutions\nEffective Date: January 1, 2024\nReview Date: January 1, 2025\n\n1. PURPOSE\nThis Information Security Policy establishes TechCorp Solutions' commitment to protecting information assets and defines the framework for information security management across the organization.\n\n2. SCOPE\nThis policy applies to all employees, contractors, vendors, and third parties who have access to TechCorp Solutions information systems and data.\n\n3. INFORMATION SECURITY OBJECTIVES\n- Ensure confidentiality, integrity, and availability of information assets\n- Comply with applicable legal, regulatory, and contractual requirements\n- Maintain customer trust through demonstrated security practices\n- Enable business operations through secure information systems\n\n[Document continues with full policy content...]"
+    }
+  }
+}

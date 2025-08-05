@@ -1,0 +1,336 @@
+{
+  "frameworks": [
+    {
+      "id": "soc2",
+      "name": "SOC 2",
+      "fullName": "Service Organization Control 2",
+      "description": "SOC 2 is an auditing procedure that ensures service providers securely manage data to protect the interests of the organization and the privacy of its clients.",
+      "category": "Security & Privacy",
+      "complexity": "Medium",
+      "timeToImplement": "3-6 months",
+      "industryFocus": ["Technology", "SaaS", "Cloud Services"],
+      "keyPrinciples": [
+        {
+          "name": "Security",
+          "description": "Protection against unauthorized access",
+          "required": true
+        },
+        {
+          "name": "Availability",
+          "description": "System operational availability as committed",
+          "required": false
+        },
+        {
+          "name": "Processing Integrity",
+          "description": "System processing is complete, valid, accurate, timely, and authorized",
+          "required": false
+        },
+        {
+          "name": "Confidentiality",
+          "description": "Information designated as confidential is protected",
+          "required": false
+        },
+        {
+          "name": "Privacy",
+          "description": "Personal information is collected, used, retained, disclosed, and disposed of in conformity with privacy commitments",
+          "required": false
+        }
+      ],
+      "benefits": [
+        "Builds customer trust",
+        "Competitive advantage",
+        "Demonstrates security commitment",
+        "Required by many enterprise customers"
+      ],
+      "requirements": {
+        "policies": 15,
+        "controls": 64,
+        "evidenceTypes": ["Policies", "Procedures", "Screenshots", "Reports"],
+        "auditFrequency": "Annual"
+      },
+      "expertIntroduction": "SOC 2 is one of my favorite frameworks to work with! It's designed to show your customers that you take data security seriously. Think of it as your 'trust certificate' for handling sensitive information."
+    },
+    {
+      "id": "iso27001",
+      "name": "ISO 27001",
+      "fullName": "ISO/IEC 27001 Information Security Management",
+      "description": "ISO 27001 is the international standard for information security management systems (ISMS). It provides a framework for managing sensitive company information.",
+      "category": "Information Security",
+      "complexity": "High",
+      "timeToImplement": "6-12 months",
+      "industryFocus": ["Enterprise", "Government", "Healthcare", "Financial Services"],
+      "keyPrinciples": [
+        {
+          "name": "Information Security Policy",
+          "description": "Documented information security policies",
+          "required": true
+        },
+        {
+          "name": "Risk Management",
+          "description": "Systematic approach to managing information security risks",
+          "required": true
+        },
+        {
+          "name": "Asset Management",
+          "description": "Identification and protection of information assets",
+          "required": true
+        },
+        {
+          "name": "Access Control",
+          "description": "Managing access to information and systems",
+          "required": true
+        }
+      ],
+      "benefits": [
+        "Global recognition and credibility",
+        "Systematic risk management approach",
+        "Legal and regulatory compliance",
+        "Business continuity improvement"
+      ],
+      "requirements": {
+        "policies": 35,
+        "controls": 114,
+        "evidenceTypes": ["Risk Assessments", "Policies", "Procedures", "Training Records"],
+        "auditFrequency": "Annual with surveillance audits"
+      },
+      "expertIntroduction": "ISO 27001 is the gold standard for information security management. I love how comprehensive it is - it covers everything from risk assessment to incident response. Perfect for organizations serious about security."
+    },
+    {
+      "id": "gdpr",
+      "name": "GDPR",
+      "fullName": "General Data Protection Regulation",
+      "description": "GDPR is the EU's privacy and data protection regulation that applies to organizations processing personal data of EU individuals.",
+      "category": "Privacy & Data Protection",
+      "complexity": "High",
+      "timeToImplement": "4-8 months",
+      "industryFocus": ["All industries processing EU personal data"],
+      "keyPrinciples": [
+        {
+          "name": "Lawfulness",
+          "description": "Processing must have a legal basis",
+          "required": true
+        },
+        {
+          "name": "Fairness & Transparency",
+          "description": "Processing must be fair and transparent to individuals",
+          "required": true
+        },
+        {
+          "name": "Purpose Limitation",
+          "description": "Data collected for specific, explicit purposes",
+          "required": true
+        },
+        {
+          "name": "Data Minimization",
+          "description": "Only collect data that is necessary",
+          "required": true
+        },
+        {
+          "name": "Accuracy",
+          "description": "Keep personal data accurate and up to date",
+          "required": true
+        },
+        {
+          "name": "Storage Limitation",
+          "description": "Don't keep personal data longer than necessary",
+          "required": true
+        },
+        {
+          "name": "Integrity & Confidentiality",
+          "description": "Secure processing of personal data",
+          "required": true
+        },
+        {
+          "name": "Accountability",
+          "description": "Demonstrate compliance with GDPR principles",
+          "required": true
+        }
+      ],
+      "benefits": [
+        "EU market access",
+        "Improved data governance",
+        "Enhanced customer trust",
+        "Competitive advantage in privacy"
+      ],
+      "requirements": {
+        "policies": 25,
+        "controls": 47,
+        "evidenceTypes": ["Privacy Impact Assessments", "Consent Records", "Data Maps", "Breach Logs"],
+        "auditFrequency": "Ongoing monitoring required"
+      },
+      "expertIntroduction": "GDPR is fascinating because it puts individuals back in control of their data. I'll help you navigate the rights management, data processing requirements, and privacy by design principles."
+    },
+    {
+      "id": "hipaa",
+      "name": "HIPAA",
+      "fullName": "Health Insurance Portability and Accountability Act",
+      "description": "HIPAA establishes standards for protecting sensitive patient health information and applies to healthcare providers, plans, and business associates.",
+      "category": "Healthcare Privacy",
+      "complexity": "Medium",
+      "timeToImplement": "3-6 months",
+      "industryFocus": ["Healthcare", "Healthcare Technology"],
+      "keyPrinciples": [
+        {
+          "name": "Privacy Rule",
+          "description": "Protects individually identifiable health information",
+          "required": true
+        },
+        {
+          "name": "Security Rule",
+          "description": "Sets standards for protecting electronic health information",
+          "required": true
+        },
+        {
+          "name": "Breach Notification Rule",
+          "description": "Requires notification of breaches of unsecured health information",
+          "required": true
+        }
+      ],
+      "benefits": [
+        "Healthcare market access",
+        "Patient trust",
+        "Legal compliance",
+        "Data security improvement"
+      ],
+      "requirements": {
+        "policies": 18,
+        "controls": 42,
+        "evidenceTypes": ["Risk Assessments", "Training Records", "Business Associate Agreements", "Breach Logs"],
+        "auditFrequency": "Regular internal audits"
+      },
+      "expertIntroduction": "HIPAA is crucial for protecting patient health information. I'll guide you through the privacy and security rules, helping you create a compliant healthcare environment."
+    },
+    {
+      "id": "pci",
+      "name": "PCI DSS",
+      "fullName": "Payment Card Industry Data Security Standard",
+      "description": "PCI DSS is a set of security standards designed to ensure that companies that accept, process, store or transmit credit card information maintain a secure environment.",
+      "category": "Payment Security",
+      "complexity": "Medium",
+      "timeToImplement": "3-6 months",
+      "industryFocus": ["E-commerce", "Retail", "Payment Processing"],
+      "keyPrinciples": [
+        {
+          "name": "Build and Maintain Secure Networks",
+          "description": "Install and maintain firewall configurations and secure system configurations",
+          "required": true
+        },
+        {
+          "name": "Protect Cardholder Data",
+          "description": "Protect stored cardholder data and encrypt transmission across open networks",
+          "required": true
+        },
+        {
+          "name": "Maintain Vulnerability Management",
+          "description": "Use and maintain antivirus software and secure systems and applications",
+          "required": true
+        },
+        {
+          "name": "Implement Strong Access Control",
+          "description": "Restrict access to cardholder data and assign unique IDs",
+          "required": true
+        },
+        {
+          "name": "Monitor and Test Networks",
+          "description": "Track and monitor access to network resources and regularly test security systems",
+          "required": true
+        },
+        {
+          "name": "Maintain Information Security Policy",
+          "description": "Maintain a policy that addresses information security for all personnel",
+          "required": true
+        }
+      ],
+      "benefits": [
+        "Accept payment cards",
+        "Reduced breach risk",
+        "Customer confidence",
+        "Avoid penalties"
+      ],
+      "requirements": {
+        "policies": 12,
+        "controls": 78,
+        "evidenceTypes": ["Network Scans", "Penetration Tests", "Policies", "Training Records"],
+        "auditFrequency": "Annual (Level 1), Self-assessment (Levels 2-4)"
+      },
+      "expertIntroduction": "PCI DSS is essential for anyone handling payment card data. I'll help you understand the requirements and implement the necessary security controls to protect cardholder information."
+    },
+    {
+      "id": "ccpa",
+      "name": "CCPA",
+      "fullName": "California Consumer Privacy Act",
+      "description": "CCPA gives California consumers rights over their personal information and applies to businesses that collect personal information of California residents.",
+      "category": "Privacy Rights",
+      "complexity": "Medium",
+      "timeToImplement": "2-4 months",
+      "industryFocus": ["All businesses serving California consumers"],
+      "keyPrinciples": [
+        {
+          "name": "Right to Know",
+          "description": "Consumers can request information about personal data collection and use",
+          "required": true
+        },
+        {
+          "name": "Right to Delete",
+          "description": "Consumers can request deletion of their personal information",
+          "required": true
+        },
+        {
+          "name": "Right to Opt-Out",
+          "description": "Consumers can opt-out of the sale of their personal information",
+          "required": true
+        },
+        {
+          "name": "Right to Non-Discrimination",
+          "description": "Businesses cannot discriminate against consumers exercising their rights",
+          "required": true
+        }
+      ],
+      "benefits": [
+        "California market access",
+        "Consumer trust",
+        "Privacy leadership",
+        "Regulatory compliance"
+      ],
+      "requirements": {
+        "policies": 8,
+        "controls": 24,
+        "evidenceTypes": ["Privacy Policy", "Data Maps", "Consumer Requests", "Training Records"],
+        "auditFrequency": "Ongoing compliance monitoring"
+      },
+      "expertIntroduction": "CCPA gives California consumers powerful rights over their personal information. I'll help you understand your obligations and implement the necessary processes for compliance."
+    }
+  ],
+  "assessmentQuestions": {
+    "general": [
+      {
+        "id": "data_types",
+        "question": "What types of data does your organization collect and process?",
+        "type": "multiple_choice",
+        "options": ["Personal data", "Payment data", "Health information", "Financial data", "Employee data", "Customer data"]
+      },
+      {
+        "id": "current_security",
+        "question": "How would you describe your current security posture?",
+        "type": "single_choice",
+        "options": ["Just getting started", "Basic security measures", "Intermediate security", "Advanced security program"]
+      },
+      {
+        "id": "compliance_drivers",
+        "question": "What's driving your compliance needs?",
+        "type": "multiple_choice",
+        "options": ["Customer requirements", "Regulatory obligations", "Business growth", "Risk management", "Competitive advantage"]
+      }
+    ]
+  },
+  "frameworkComparisons": [
+    {
+      "frameworks": ["soc2", "iso27001"],
+      "comparison": "SOC 2 is customer-focused and specific to service organizations, while ISO 27001 is broader and internationally recognized. SOC 2 is often easier to start with."
+    },
+    {
+      "frameworks": ["gdpr", "ccpa"],
+      "comparison": "GDPR applies to EU personal data with broader scope, while CCPA is California-specific with more limited rights. GDPR has higher penalties."
+    }
+  ]
+}

@@ -1,386 +1,354 @@
-// FILE PATH: lib/shared/utils/validation_utils.dart
-// Validation Utilities - Form validation and input sanitization
-// Referenced in lead capture forms and user input components
+// lib/shared/utils/validation_utils.dart
+// Validation utilities for forms and user input
+// Provides consistent validation rules across the application
 
+/// Comprehensive validation utilities for ArionComply forms
 class ValidationUtils {
-  // Regular expressions for validation
+  // Private constructor to prevent instantiation
+  ValidationUtils._();
+
+  // Static regex patterns for validation
   static final RegExp _emailRegExp = RegExp(
-    r'^[a-zA-Z0-9.!#$%&'"'"'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
-  );
-  
-  static final RegExp _phoneRegExp = RegExp(
-    r'^\+?[\d\s\-\(\)\.]{10,}$',
-  );
-  
-  static final RegExp _urlRegExp = RegExp(
-    r'^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$',
+    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
   );
 
-  /// Validate email address
-  static String? validateEmail(String? email) {
-    if (email == null || email.trim().isEmpty) {
+  static final RegExp _phoneRegExp = RegExp(
+    r'^\+?[\d\s\-\(\)]{10,}$',
+  );
+
+  static final RegExp _urlRegExp = RegExp(
+    r'^https?://[^\s/$.?#].[^\s]*$',
+    caseSensitive: false,
+  );
+
+  static final RegExp _nameRegExp = RegExp(
+    r'^[a-zA-Z\s\-\.\']{2,50}$',
+  );
+
+  static final RegExp _companyNameRegExp = RegExp(
+    r'^[a-zA-Z0-9\s\-\.,&\']{2,100}$',
+  );
+
+  static final RegExp _passwordRegExp = RegExp(
+    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
+  );
+
+  // Email validation
+  static String? validateEmail(String? value) {
+    if (value == null || value.trim().isEmpty) {
       return 'Email is required';
     }
+
+    final trimmedValue = value.trim();
     
-    final trimmedEmail = email.trim();
-    
-    if (!_emailRegExp.hasMatch(trimmedEmail)) {
+    if (trimmedValue.length > 254) {
+      return 'Email is too long';
+    }
+
+    if (!_emailRegExp.hasMatch(trimmedValue)) {
       return 'Please enter a valid email address';
     }
-    
-    if (trimmedEmail.length > 254) {
-      return 'Email address is too long';
+
+    // Check for common email issues
+    if (trimmedValue.contains('..') || 
+        trimmedValue.startsWith('.') || 
+        trimmedValue.endsWith('.')) {
+      return 'Please enter a valid email address';
     }
-    
-    return null; // Valid
+
+    return null;
   }
 
-  /// Validate company name
-  static String? validateCompanyName(String? companyName) {
-    if (companyName == null || companyName.trim().isEmpty) {
-      return 'Company name is required';
+  // Phone number validation
+  static String? validatePhone(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Phone number is required';
     }
-    
-    final trimmed = companyName.trim();
-    
-    if (trimmed.length < 2) {
-      return 'Company name must be at least 2 characters';
-    }
-    
-    if (trimmed.length > 100) {
-      return 'Company name must be less than 100 characters';
-    }
-    
-    // Check for valid characters (letters, numbers, spaces, basic punctuation)
-    if (!RegExp(r'^[a-zA-Z0-9\s\.\-&,\(\)]+$').hasMatch(trimmed)) {
-      return 'Company name contains invalid characters';
-    }
-    
-    return null; // Valid
-  }
 
-  /// Validate user name (first name, last name, or full name)
-  static String? validateName(String? name, {String fieldName = 'Name'}) {
-    if (name == null || name.trim().isEmpty) {
-      return '$fieldName is required';
+    final trimmedValue = value.trim();
+    
+    // Remove all non-digit characters for length check
+    final digitsOnly = trimmedValue.replaceAll(RegExp(r'[^\d]'), '');
+    
+    if (digitsOnly.length < 10) {
+      return 'Phone number must be at least 10 digits';
     }
-    
-    final trimmed = name.trim();
-    
-    if (trimmed.length < 2) {
-      return '$fieldName must be at least 2 characters';
-    }
-    
-    if (trimmed.length > 50) {
-      return '$fieldName must be less than 50 characters';
-    }
-    
-    // Allow letters, spaces, hyphens, apostrophes
-    if (!RegExp(r'^[a-zA-Z\s\-\'\.]+$').hasMatch(trimmed)) {
-      return '$fieldName can only contain letters, spaces, hyphens, and apostrophes';
-    }
-    
-    return null; // Valid
-  }
 
-  /// Validate job title/role
-  static String? validateJobTitle(String? jobTitle) {
-    if (jobTitle == null || jobTitle.trim().isEmpty) {
-      return null; // Optional field
+    if (digitsOnly.length > 15) {
+      return 'Phone number is too long';
     }
-    
-    final trimmed = jobTitle.trim();
-    
-    if (trimmed.length > 100) {
-      return 'Job title must be less than 100 characters';
-    }
-    
-    // Allow letters, numbers, spaces, basic punctuation
-    if (!RegExp(r'^[a-zA-Z0-9\s\.\-&,\(\)\/]+$').hasMatch(trimmed)) {
-      return 'Job title contains invalid characters';
-    }
-    
-    return null; // Valid
-  }
 
-  /// Validate phone number
-  static String? validatePhone(String? phone) {
-    if (phone == null || phone.trim().isEmpty) {
-      return null; // Optional field
-    }
-    
-    final trimmed = phone.trim();
-    
-    if (!_phoneRegExp.hasMatch(trimmed)) {
+    if (!_phoneRegExp.hasMatch(trimmedValue)) {
       return 'Please enter a valid phone number';
     }
-    
-    return null; // Valid
+
+    return null;
   }
 
-  /// Validate URL
-  static String? validateUrl(String? url) {
-    if (url == null || url.trim().isEmpty) {
-      return null; // Optional field
+  // URL validation
+  static String? validateUrl(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'URL is required';
     }
+
+    final trimmedValue = value.trim();
     
-    final trimmed = url.trim();
-    
-    if (!_urlRegExp.hasMatch(trimmed)) {
-      return 'Please enter a valid URL (including http:// or https://)';
+    if (!_urlRegExp.hasMatch(trimmedValue)) {
+      return 'Please enter a valid URL (must start with http:// or https://)';
     }
-    
-    return null; // Valid
+
+    return null;
   }
 
-  /// Validate framework selection
-  static String? validateFramework(String? framework) {
-    if (framework == null || framework.trim().isEmpty) {
-      return 'Please select a compliance framework';
+  // Name validation (first name, last name)
+  static String? validateName(String? value, {String fieldName = 'Name'}) {
+    if (value == null || value.trim().isEmpty) {
+      return '$fieldName is required';
     }
+
+    final trimmedValue = value.trim();
     
+    if (trimmedValue.length < 2) {
+      return '$fieldName must be at least 2 characters';
+    }
+
+    if (trimmedValue.length > 50) {
+      return '$fieldName must be less than 50 characters';
+    }
+
+    if (!_nameRegExp.hasMatch(trimmedValue)) {
+      return '$fieldName contains invalid characters';
+    }
+
+    // Check for numbers in name
+    if (RegExp(r'\d').hasMatch(trimmedValue)) {
+      return '$fieldName cannot contain numbers';
+    }
+
+    return null;
+  }
+
+  // Company name validation
+  static String? validateCompanyName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Company name is required';
+    }
+
+    final trimmedValue = value.trim();
+    
+    if (trimmedValue.length < 2) {
+      return 'Company name must be at least 2 characters';
+    }
+
+    if (trimmedValue.length > 100) {
+      return 'Company name must be less than 100 characters';
+    }
+
+    if (!_companyNameRegExp.hasMatch(trimmedValue)) {
+      return 'Company name contains invalid characters';
+    }
+
+    return null;
+  }
+
+  // Password validation
+  static String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Password is required';
+    }
+
+    if (value.length < 8) {
+      return 'Password must be at least 8 characters';
+    }
+
+    if (value.length > 128) {
+      return 'Password is too long';
+    }
+
+    if (!_passwordRegExp.hasMatch(value)) {
+      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
+    }
+
+    return null;
+  }
+
+  // Confirm password validation
+  static String? validateConfirmPassword(String? value, String? originalPassword) {
+    if (value == null || value.isEmpty) {
+      return 'Please confirm your password';
+    }
+
+    if (value != originalPassword) {
+      return 'Passwords do not match';
+    }
+
+    return null;
+  }
+
+  // Required field validation
+  static String? validateRequired(String? value, {String fieldName = 'Field'}) {
+    if (value == null || value.trim().isEmpty) {
+      return '$fieldName is required';
+    }
+    return null;
+  }
+
+  // Minimum length validation
+  static String? validateMinLength(String? value, int minLength, {String fieldName = 'Field'}) {
+    if (value == null || value.trim().isEmpty) {
+      return '$fieldName is required';
+    }
+
+    if (value.trim().length < minLength) {
+      return '$fieldName must be at least $minLength characters';
+    }
+
+    return null;
+  }
+
+  // Maximum length validation
+  static String? validateMaxLength(String? value, int maxLength, {String fieldName = 'Field'}) {
+    if (value != null && value.length > maxLength) {
+      return '$fieldName must be less than $maxLength characters';
+    }
+    return null;
+  }
+
+  // Numeric validation
+  static String? validateNumeric(String? value, {String fieldName = 'Field'}) {
+    if (value == null || value.trim().isEmpty) {
+      return '$fieldName is required';
+    }
+
+    final numericValue = double.tryParse(value.trim());
+    if (numericValue == null) {
+      return '$fieldName must be a valid number';
+    }
+
+    return null;
+  }
+
+  // Positive number validation
+  static String? validatePositiveNumber(String? value, {String fieldName = 'Field'}) {
+    final numericValidation = validateNumeric(value, fieldName: fieldName);
+    if (numericValidation != null) {
+      return numericValidation;
+    }
+
+    final numericValue = double.parse(value!.trim());
+    if (numericValue <= 0) {
+      return '$fieldName must be a positive number';
+    }
+
+    return null;
+  }
+
+  // Industry validation (for compliance context)
+  static String? validateIndustry(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Industry is required';
+    }
+
+    final validIndustries = [
+      'Technology',
+      'Healthcare',
+      'Financial Services',
+      'Manufacturing',
+      'Education',
+      'Government',
+      'Retail',
+      'Professional Services',
+      'Non-profit',
+      'Other',
+    ];
+
+    if (!validIndustries.contains(value.trim())) {
+      return 'Please select a valid industry';
+    }
+
+    return null;
+  }
+
+  // Framework validation (for compliance frameworks)
+  static String? validateFramework(List<String>? frameworks) {
+    if (frameworks == null || frameworks.isEmpty) {
+      return 'Please select at least one compliance framework';
+    }
+
     final validFrameworks = [
       'SOC 2',
       'ISO 27001',
       'GDPR',
       'HIPAA',
       'PCI DSS',
-      'CCPA',
       'NIST',
       'FedRAMP',
+      'SOX',
     ];
-    
-    if (!validFrameworks.contains(framework)) {
-      return 'Please select a valid compliance framework';
-    }
-    
-    return null; // Valid
-  }
 
-  /// Validate industry selection
-  static String? validateIndustry(String? industry) {
-    if (industry == null || industry.trim().isEmpty) {
-      return null; // Optional field
-    }
-    
-    final validIndustries = [
-      'Technology',
-      'Healthcare',
-      'Financial Services',
-      'Education',
-      'Government',
-      'Manufacturing',
-      'Retail',
-      'Professional Services',
-      'Non-profit',
-      'Other',
-    ];
-    
-    if (!validIndustries.contains(industry)) {
-      return 'Please select a valid industry';
-    }
-    
-    return null; // Valid
-  }
-
-  /// Validate company size
-  static String? validateCompanySize(String? size) {
-    if (size == null || size.trim().isEmpty) {
-      return null; // Optional field
-    }
-    
-    final validSizes = [
-      '1-10 employees',
-      '11-50 employees',
-      '51-200 employees',
-      '201-1000 employees',
-      '1000+ employees',
-    ];
-    
-    if (!validSizes.contains(size)) {
-      return 'Please select a valid company size';
-    }
-    
-    return null; // Valid
-  }
-
-  /// Validate message content
-  static String? validateMessage(String? message, {int minLength = 1, int maxLength = 1000}) {
-    if (message == null || message.trim().isEmpty) {
-      return 'Message cannot be empty';
-    }
-    
-    final trimmed = message.trim();
-    
-    if (trimmed.length < minLength) {
-      return 'Message must be at least $minLength character${minLength > 1 ? 's' : ''}';
-    }
-    
-    if (trimmed.length > maxLength) {
-      return 'Message must be less than $maxLength characters';
-    }
-    
-    return null; // Valid
-  }
-
-  /// Validate assessment response
-  static String? validateAssessmentResponse(String? response) {
-    if (response == null || response.trim().isEmpty) {
-      return 'Please provide a response';
-    }
-    
-    final validResponses = ['Yes', 'No', 'Partial', 'N/A', 'Unknown'];
-    
-    if (!validResponses.contains(response)) {
-      return 'Please select a valid response';
-    }
-    
-    return null; // Valid
-  }
-
-  /// Sanitize user input for safe storage/display
-  static String sanitizeInput(String input) {
-    return input
-        .trim()
-        .replaceAll(RegExp(r'<[^>]*>'), '') // Remove HTML tags
-        .replaceAll(RegExp(r'[^\w\s\.\-@,\(\)&]'), '') // Remove special chars except safe ones
-        .replaceAll(RegExp(r'\s+'), ' '); // Normalize whitespace
-  }
-
-  /// Check if string contains profanity or inappropriate content
-  static bool containsInappropriateContent(String text) {
-    final inappropriate = [
-      // Add inappropriate words/phrases as needed
-      'spam',
-      'scam',
-      'phishing',
-    ];
-    
-    final lowerText = text.toLowerCase();
-    return inappropriate.any((word) => lowerText.contains(word));
-  }
-
-  /// Validate that required fields are filled
-  static Map<String, String> validateRequiredFields(Map<String, String?> fields) {
-    final errors = <String, String>{};
-    
-    fields.forEach((fieldName, value) {
-      if (value == null || value.trim().isEmpty) {
-        errors[fieldName] = '$fieldName is required';
+    for (final framework in frameworks) {
+      if (!validFrameworks.contains(framework)) {
+        return 'Invalid framework selected: $framework';
       }
-    });
-    
-    return errors;
+    }
+
+    return null;
   }
 
-  /// Validate form data for lead capture
-  static Map<String, String> validateLeadCaptureForm({
+  // Combined validation for contact forms
+  static Map<String, String?> validateContactForm({
+    required String? firstName,
+    required String? lastName,
     required String? email,
     required String? companyName,
-    String? firstName,
-    String? lastName,
-    String? jobTitle,
     String? phone,
+    String? industry,
   }) {
-    final errors = <String, String>{};
-    
-    // Email validation
-    final emailError = validateEmail(email);
-    if (emailError != null) {
-      errors['email'] = emailError;
-    }
-    
-    // Company name validation
-    final companyError = validateCompanyName(companyName);
-    if (companyError != null) {
-      errors['companyName'] = companyError;
-    }
-    
-    // Optional field validations
-    if (firstName != null) {
-      final firstNameError = validateName(firstName, fieldName: 'First name');
-      if (firstNameError != null) {
-        errors['firstName'] = firstNameError;
-      }
-    }
-    
-    if (lastName != null) {
-      final lastNameError = validateName(lastName, fieldName: 'Last name');
-      if (lastNameError != null) {
-        errors['lastName'] = lastNameError;
-      }
-    }
-    
-    if (jobTitle != null) {
-      final jobTitleError = validateJobTitle(jobTitle);
-      if (jobTitleError != null) {
-        errors['jobTitle'] = jobTitleError;
-      }
-    }
-    
-    if (phone != null) {
-      final phoneError = validatePhone(phone);
-      if (phoneError != null) {
-        errors['phone'] = phoneError;
-      }
-    }
-    
-    return errors;
+    return {
+      'firstName': validateName(firstName, fieldName: 'First name'),
+      'lastName': validateName(lastName, fieldName: 'Last name'),
+      'email': validateEmail(email),
+      'companyName': validateCompanyName(companyName),
+      'phone': phone != null && phone.isNotEmpty ? validatePhone(phone) : null,
+      'industry': industry != null && industry.isNotEmpty ? validateIndustry(industry) : null,
+    };
   }
 
-  /// Check if email domain is from a common business domain
-  static bool isBusinessEmail(String email) {
-    final domain = email.split('@').last.toLowerCase();
-    
-    // Common personal email domains to exclude
-    final personalDomains = [
-      'gmail.com',
-      'yahoo.com',
-      'hotmail.com',
-      'outlook.com',
-      'aol.com',
-      'icloud.com',
-      'protonmail.com',
-      'mail.com',
-    ];
-    
-    return !personalDomains.contains(domain);
+  // Combined validation for registration forms
+  static Map<String, String?> validateRegistrationForm({
+    required String? firstName,
+    required String? lastName,
+    required String? email,
+    required String? password,
+    required String? confirmPassword,
+    required String? companyName,
+    String? industry,
+    List<String>? frameworks,
+  }) {
+    return {
+      'firstName': validateName(firstName, fieldName: 'First name'),
+      'lastName': validateName(lastName, fieldName: 'Last name'),
+      'email': validateEmail(email),
+      'password': validatePassword(password),
+      'confirmPassword': validateConfirmPassword(confirmPassword, password),
+      'companyName': validateCompanyName(companyName),
+      'industry': industry != null ? validateIndustry(industry) : null,
+      'frameworks': frameworks != null ? validateFramework(frameworks) : null,
+    };
   }
 
-  /// Validate compliance framework configuration
-  static String? validateFrameworkConfig(Map<String, dynamic> config) {
-    final requiredFields = ['name', 'version', 'scope'];
-    
-    for (final field in requiredFields) {
-      if (!config.containsKey(field) || config[field] == null) {
-        return 'Missing required field: $field';
+  // Utility method to check if form is valid
+  static bool isFormValid(Map<String, String?> validationResults) {
+    return validationResults.values.every((error) => error == null);
+  }
+
+  // Utility method to get first error from validation results
+  static String? getFirstError(Map<String, String?> validationResults) {
+    for (final error in validationResults.values) {
+      if (error != null) {
+        return error;
       }
     }
-    
-    return null; // Valid
-  }
-
-  /// Format and validate user input for consistent storage
-  static String formatUserInput(String input) {
-    return input
-        .trim()
-        .split(' ')
-        .where((word) => word.isNotEmpty)
-        .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase())
-        .join(' ');
-  }
-
-  /// Check if input is likely to be test/dummy data
-  static bool isTestData(String input) {
-    final testPatterns = [
-      RegExp(r'^test', caseSensitive: false),
-      RegExp(r'^demo', caseSensitive: false),
-      RegExp(r'^sample', caseSensitive: false),
-      RegExp(r'^example', caseSensitive: false),
-      RegExp(r'@test\.com$', caseSensitive: false),
-      RegExp(r'@example\.com$', caseSensitive: false),
-    ];
-    
-    return testPatterns.any((pattern) => pattern.hasMatch(input));
+    return null;
   }
 }

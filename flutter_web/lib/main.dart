@@ -227,4 +227,149 @@ class AppConfig {
   // Analytics Configuration
   bool get enableAnalytics => isProduction;
   String get analyticsKey => isProduction ? 'prod_key' : 'demo_key';
+}// FILE PATH: lib/main.dart
+// Main entry point - Fixed version with proper imports
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Core imports
+import 'core/theme/app_colors.dart';
+import 'core/routing/app_router.dart';
+
+// Features
+import 'features/avatar/screens/avatar_home_screen.dart';
+import 'features/assessment/screens/assessment_screen.dart';
+import 'features/framework/screens/framework_selection_screen.dart';
+import 'features/demo/screens/demo_showcase_screen.dart';
+import 'features/chat/screens/standalone_chat_screen.dart';
+
+// Shared widgets
+import 'shared/widgets/responsive_layout.dart';
+
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'ArionComply Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: _createMaterialColor(AppColors.primary),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          brightness: Brightness.light,
+        ),
+        useMaterial3: true,
+        fontFamily: 'Inter',
+      ),
+      home: const MainScreen(),
+      routes: {
+        '/avatar': (context) => const AvatarHomeScreen(),
+        '/assessment': (context) => const AssessmentScreen(),
+        '/framework': (context) => const FrameworkSelectionScreen(),
+        '/demo': (context) => const DemoShowcaseScreen(),
+        '/chat': (context) => const StandaloneChatScreen(),
+      },
+    );
+  }
+
+  // Helper to create MaterialColor from Color
+  MaterialColor _createMaterialColor(Color color) {
+    final int red = color.red;
+    final int green = color.green;
+    final int blue = color.blue;
+
+    final Map<int, Color> shades = {
+      50: Color.fromRGBO(red, green, blue, .1),
+      100: Color.fromRGBO(red, green, blue, .2),
+      200: Color.fromRGBO(red, green, blue, .3),
+      300: Color.fromRGBO(red, green, blue, .4),
+      400: Color.fromRGBO(red, green, blue, .5),
+      500: Color.fromRGBO(red, green, blue, .6),
+      600: Color.fromRGBO(red, green, blue, .7),
+      700: Color.fromRGBO(red, green, blue, .8),
+      800: Color.fromRGBO(red, green, blue, .9),
+      900: Color.fromRGBO(red, green, blue, 1),
+    };
+
+    return MaterialColor(color.value, shades);
+  }
+}
+
+// Simple main screen with navigation
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: ResponsiveLayout(
+        mobile: _buildMobileLayout(context),
+        tablet: _buildTabletLayout(context),
+        desktop: _buildDesktopLayout(context),
+      ),
+    );
+  }
+
+  Widget _buildMobileLayout(BuildContext context) {
+    return const AvatarHomeScreen(); // Default to avatar screen on mobile
+  }
+
+  Widget _buildTabletLayout(BuildContext context) {
+    return const AvatarHomeScreen(); // Default to avatar screen on tablet
+  }
+
+  Widget _buildDesktopLayout(BuildContext context) {
+    return Row(
+      children: [
+        // Navigation sidebar
+        Container(
+          width: 250,
+          color: AppColors.surfaceSecondary,
+          child: _buildNavigationSidebar(context),
+        ),
+        // Main content
+        const Expanded(
+          child: AvatarHomeScreen(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNavigationSidebar(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        const Text(
+          'ArionComply',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textPrimary,
+          ),
+        ),
+        const SizedBox(height: 24),
+        _buildNavItem(context, 'Avatar Chat', '/avatar', Icons.psychology),
+        _buildNavItem(context, 'Assessment', '/assessment', Icons.assessment),
+        _buildNavItem(context, 'Framework', '/framework', Icons.account_tree),
+        _buildNavItem(context, 'Demo', '/demo', Icons.play_circle),
+        _buildNavItem(context, 'Chat', '/chat', Icons.chat),
+      ],
+    );
+  }
+
+  Widget _buildNavItem(BuildContext context, String title, String route, IconData icon) {
+    return ListTile(
+      leading: Icon(icon, color: AppColors.primary),
+      title: Text(title, style: const TextStyle(color: AppColors.textPrimary)),
+      onTap: () => Navigator.pushNamed(context, route),
+    );
+  }
 }

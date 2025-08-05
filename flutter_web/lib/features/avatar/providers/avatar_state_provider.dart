@@ -1,16 +1,21 @@
 // FILE PATH: lib/features/avatar/providers/avatar_state_provider.dart
-// Avatar State Provider - Central state management for avatar interface
-// Referenced in avatar_home_screen.dart for avatar behavior and state
+// Avatar State Provider - Fixed version for demo
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 
+// Core imports
+import '../../../core/models/emotion_types.dart';
+import '../../../core/constants/text_constants.dart';
+import '../../../core/services/storage_service.dart';
+
+// Models
 import '../models/expert_personality.dart';
 import '../models/conversation_context.dart';
+
+// Services
 import '../services/expert_personality_engine.dart';
 import '../../../core/services/audio_service.dart';
-import '../../../core/services/storage_service.dart';
-import '../../../core/constants/text_constants.dart';
 
 /// Avatar state for the interface
 enum AvatarStateType {
@@ -20,19 +25,6 @@ enum AvatarStateType {
   speaking,
   explaining,
   celebrating,
-  concerned,
-}
-
-/// Avatar emotional states
-enum AvatarEmotion {
-  neutral,
-  happy,
-  focused,
-  encouraging,
-  serious,
-  celebrating,
-  welcoming,
-  helpful,
   concerned,
 }
 
@@ -64,11 +56,11 @@ class AvatarState {
     this.voiceInputEnabled = false,
     this.showHints = true,
     this.conversationHistory = const [],
-    DateTime? lastInteraction,
+    required this.lastInteraction,
     this.context = const ConversationContext(),
     this.personalityType = ExpertPersonalityType.professional,
     this.confidenceLevel = 1.0,
-  }) : lastInteraction = lastInteraction ?? DateTime.now();
+  });
 
   AvatarState copyWith({
     String? name,
@@ -104,35 +96,25 @@ class AvatarState {
     );
   }
 
-  /// Get user's preferred greeting based on context
-  String get personalizedGreeting {
-    if (context.isNewUser) {
-      return TextConstants.newUserWelcome;
-    } else if (context.conversationCount > 0) {
-      return TextConstants.returningUserWelcome.replaceAll(
-        'back!', 
-        'back, ${context.greetingName}!'
-      );
-    }
-    return TextConstants.welcomeMessage;
-  }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AvatarState &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          currentState == other.currentState &&
+          currentEmotion == other.currentEmotion &&
+          isProcessing == other.isProcessing;
 
-  /// Check if avatar should show onboarding hints
-  bool get shouldShowOnboarding => context.isNewUser || conversationHistory.isEmpty;
-
-  /// Get contextual suggestions for current state
-  List<String> get contextualSuggestions {
-    if (shouldShowOnboarding) {
-      return TextConstants.getSuggestionsByContext('new_user');
-    } else if (context.hasFrameworkPreferences) {
-      return TextConstants.getSuggestionsByContext('assessment_mode');
-    } else {
-      return TextConstants.getSuggestionsByContext('framework_explorer');
-    }
-  }
+  @override
+  int get hashCode =>
+      name.hashCode ^
+      currentState.hashCode ^
+      currentEmotion.hashCode ^
+      isProcessing.hashCode;
 }
 
-/// Avatar state notifier for managing avatar behavior
+/// Avatar State Notifier
 class AvatarStateNotifier extends StateNotifier<AvatarState> {
   final ExpertPersonalityEngine _personalityEngine;
   final AudioService _audioService;
@@ -142,49 +124,41 @@ class AvatarStateNotifier extends StateNotifier<AvatarState> {
     this._personalityEngine,
     this._audioService,
     this._storageService,
-  ) : super(const AvatarState());
+  ) : super(AvatarState(
+          lastInteraction: DateTime.now(),
+          currentMessage: TextConstants.welcomeMessage,
+          currentEmotion: AvatarEmotion.welcoming,
+        )) {
+    _initialize();
+  }
 
-  /// Initialize avatar with user context
-  Future<void> initialize() async {
+  bool get mounted => true; // Simple mounted check for demo
+
+  /// Initialize the avatar state
+  Future<void> _initialize() async {
     try {
-      // Load saved context if available
-      final savedContext = await _storageService.loadConversationContext();
-      final savedPersonality = await _storageService.loadExpertPersonality();
-      
-      // Initialize personality engine
-      _personalityEngine.initialize(
-        userName: savedContext?.userName,
-        companyName: savedContext?.companyName,
-        industry: savedContext?.industry,
-        primaryFrameworks: savedContext?.primaryFrameworks,
-        personalityType: savedPersonality,
-      );
-      
-      // Set initial state
-      final initialMessage = _getInitialMessage(savedContext);
+      // Load previous conversation context if available
+      final history = await _storageService.loadConversationHistory();
+      final lastInteraction = DateTime.now();
       
       state = state.copyWith(
-        currentState: AvatarStateType.idle,
-        currentEmotion: AvatarEmotion.welcoming,
-        currentMessage: initialMessage,
-        context: savedContext ?? const ConversationContext(),
-        personalityType: savedPersonality ?? ExpertPersonalityType.professional,
-        lastInteraction: DateTime.now(),
+        conversationHistory: history.map((msg) => msg['content']?.toString() ?? '').toList(),
+        lastInteraction: lastInteraction,
+        currentMessage: history.isEmpty 
+            ? TextConstants.welcomeMessage 
+            : "Welcome back! Ready to continue where we left off?",
+        currentEmotion: history.isEmpty 
+            ? AvatarEmotion.welcoming 
+            : AvatarEmotion.happy,
       );
-      
-      // Speak welcome message if voice is enabled
-      if (state.voiceEnabled) {
-        await _audioService.speak(initialMessage);
-      }
-      
+
       if (kDebugMode) {
-        print('🤖 Avatar initialized: ${state.name} (${state.personalityType})');
+        print('🤖 Avatar initialized with ${history.length} previous messages');
       }
     } catch (e) {
       if (kDebugMode) {
-        print('❌ Avatar initialization error: $e');
+        print('❌ Error initializing avatar state: $e');
       }
-      
       // Fallback to default state
       state = state.copyWith(
         currentMessage: TextConstants.welcomeMessage,
@@ -193,188 +167,140 @@ class AvatarStateNotifier extends StateNotifier<AvatarState> {
     }
   }
 
-  /// Initialize with onboarding flow
-  Future<void> initializeWithOnboarding() async {
-    await initialize();
-    
+  /// Update avatar state
+  void updateState(AvatarStateType newState) {
     state = state.copyWith(
-      showHints: true,
-      currentMessage: TextConstants.newUserWelcome,
-      currentEmotion: AvatarEmotion.welcoming,
+      currentState: newState,
+      lastInteraction: DateTime.now(),
     );
-    
-    // Show extended onboarding hints
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        state = state.copyWith(
-          currentMessage: "I'd love to learn about your company and compliance needs. What brings you here today?",
-        );
-      }
-    });
   }
 
-  /// Process user message and generate response
-  Future<void> processUserMessage(String message) async {
-    if (state.isProcessing) return;
-
-    try {
-      // Update state to processing
-      state = state.copyWith(
-        isProcessing: true,
-        currentState: AvatarStateType.processing,
-        currentEmotion: AvatarEmotion.focused,
-        currentMessage: TextConstants.getRandomFromList(TextConstants.processingMessages),
-      );
-
-      // Add to conversation history
-      final updatedHistory = [...state.conversationHistory, message];
-      
-      // Update context with new interaction
-      final updatedContext = state.context.incrementConversation();
-      
-      // Generate expert response
-      final response = await _personalityEngine.generateResponse(
-        userMessage: message,
-        context: updatedContext,
-        previousMessages: updatedHistory,
-      );
-
-      // Update state with response
-      state = state.copyWith(
-        isProcessing: false,
-        currentState: AvatarStateType.explaining,
-        currentEmotion: response.emotion,
-        currentMessage: response.content,
-        conversationHistory: updatedHistory,
-        context: updatedContext,
-        confidenceLevel: response.confidence,
-        lastInteraction: DateTime.now(),
-      );
-
-      // Save updated context
-      await _storageService.saveConversationContext(updatedContext);
-
-      // Speak response if voice is enabled
-      if (state.voiceEnabled) {
-        state = state.copyWith(currentState: AvatarStateType.speaking);
-        await _audioService.speak(response.content);
-        
-        if (mounted) {
-          state = state.copyWith(currentState: AvatarStateType.idle);
-        }
-      }
-
-      // Hide hints after first interaction
-      if (state.showHints && updatedHistory.length > 1) {
-        state = state.copyWith(showHints: false);
-      }
-
-      if (kDebugMode) {
-        print('🤖 Avatar processed message: ${message.substring(0, 50)}...');
-        print('   Response confidence: ${(response.confidence * 100).toStringAsFixed(1)}%');
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print('❌ Error processing user message: $e');
-      }
-      
-      // Reset to error state
-      state = state.copyWith(
-        isProcessing: false,
-        currentState: AvatarStateType.concerned,
-        currentEmotion: AvatarEmotion.concerned,
-        currentMessage: TextConstants.genericError,
-      );
-    }
+  /// Update avatar emotion
+  void updateEmotion(AvatarEmotion newEmotion) {
+    state = state.copyWith(
+      currentEmotion: newEmotion,
+      lastInteraction: DateTime.now(),
+    );
   }
 
-  /// Toggle voice output
-  Future<void> toggleVoice() async {
-    final newVoiceEnabled = !state.voiceEnabled;
-    
-    state = state.copyWith(voiceEnabled: newVoiceEnabled);
-    
-    // Save preference
-    await _storageService.updateUserPreference('voice_enabled', newVoiceEnabled);
-    
-    // Provide feedback
-    final message = newVoiceEnabled 
-        ? "Voice output enabled. I'll speak my responses out loud."
-        : "Voice output disabled. I'll communicate through text only.";
-    
+  /// Set processing state
+  void setProcessing(bool processing) {
+    state = state.copyWith(
+      isProcessing: processing,
+      currentState: processing ? AvatarStateType.processing : AvatarStateType.idle,
+      lastInteraction: DateTime.now(),
+    );
+  }
+
+  /// Update current message
+  void updateMessage(String message) {
     state = state.copyWith(
       currentMessage: message,
-      currentEmotion: AvatarEmotion.helpful,
+      lastInteraction: DateTime.now(),
     );
-    
-    if (kDebugMode) {
-      print('🔊 Voice output ${newVoiceEnabled ? "enabled" : "disabled"}');
-    }
   }
 
   /// Toggle voice input
-  Future<void> toggleVoiceInput() async {
-    final newVoiceInputEnabled = !state.voiceInputEnabled;
-    
+  void toggleVoiceInput() {
+    final newVoiceState = !state.voiceInputEnabled;
     state = state.copyWith(
-      voiceInputEnabled: newVoiceInputEnabled,
-      currentState: newVoiceInputEnabled ? AvatarStateType.listening : AvatarStateType.idle,
+      voiceInputEnabled: newVoiceState,
+      currentState: newVoiceState ? AvatarStateType.listening : AvatarStateType.idle,
+      lastInteraction: DateTime.now(),
     );
-    
-    if (newVoiceInputEnabled) {
+  }
+
+  /// Process user message
+  Future<void> processUserMessage(String message) async {
+    if (message.trim().isEmpty) return;
+
+    try {
+      // Update state to processing
+      setProcessing(true);
+      
+      // Add user message to history
+      final updatedHistory = [...state.conversationHistory, message];
       state = state.copyWith(
-        currentMessage: TextConstants.voicePrompt,
-        currentEmotion: AvatarEmotion.focused,
+        conversationHistory: updatedHistory,
+        currentState: AvatarStateType.thinking,
+      );
+
+      // Get response from personality engine
+      final response = await _personalityEngine.generateResponse(
+        message,
+        state.personalityType,
+      );
+
+      // Convert expert emotion to avatar emotion
+      final avatarEmotion = EmotionConverter.expertToAvatar(response.emotion);
+
+      // Update with response
+      state = state.copyWith(
+        currentMessage: response.content,
+        currentEmotion: avatarEmotion,
+        currentState: AvatarStateType.speaking,
+        conversationHistory: [...updatedHistory, response.content],
+        isProcessing: false,
+        lastInteraction: DateTime.now(),
+      );
+
+      // Save conversation
+      await _saveConversation();
+
+      // Return to idle after speaking
+      Future.delayed(const Duration(seconds: 2), () {
+        if (mounted) {
+          state = state.copyWith(
+            currentState: AvatarStateType.idle,
+            currentEmotion: AvatarEmotion.helpful,
+          );
+        }
+      });
+
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error processing message: $e');
+      }
+      
+      state = state.copyWith(
+        currentMessage: "I'm having trouble processing that. Could you try rephrasing?",
+        currentEmotion: AvatarEmotion.concerned,
+        currentState: AvatarStateType.idle,
+        isProcessing: false,
+        lastInteraction: DateTime.now(),
       );
     }
-    
-    if (kDebugMode) {
-      print('🎤 Voice input ${newVoiceInputEnabled ? "enabled" : "disabled"}');
+  }
+
+  /// Save current conversation
+  Future<void> _saveConversation() async {
+    try {
+      final messages = state.conversationHistory
+          .asMap()
+          .entries
+          .map((entry) => {
+                'id': entry.key.toString(),
+                'content': entry.value,
+                'timestamp': DateTime.now().toIso8601String(),
+                'sender': entry.key % 2 == 0 ? 'user' : 'avatar',
+              })
+          .toList();
+
+      await _storageService.saveConversationHistory(messages);
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error saving conversation: $e');
+      }
     }
   }
 
-  /// Update avatar emotion based on context
-  void updateEmotion(AvatarEmotion emotion) {
-    state = state.copyWith(
-      currentEmotion: emotion,
-      lastInteraction: DateTime.now(),
-    );
-  }
-
-  /// Update conversation context
-  Future<void> updateContext(ConversationContext newContext) async {
-    state = state.copyWith(
-      context: newContext,
-      lastInteraction: DateTime.now(),
-    );
-    
-    await _storageService.saveConversationContext(newContext);
-  }
-
-  /// Change expert personality
-  Future<void> changePersonality(ExpertPersonalityType personalityType) async {
+  /// Change personality type
+  void changePersonality(ExpertPersonalityType personalityType) {
     state = state.copyWith(
       personalityType: personalityType,
-      lastInteraction: DateTime.now(),
-    );
-    
-    // Reinitialize personality engine
-    _personalityEngine.initialize(
-      userName: state.context.userName,
-      companyName: state.context.companyName,
-      industry: state.context.industry,
-      primaryFrameworks: state.context.primaryFrameworks,
-      personalityType: personalityType,
-    );
-    
-    // Save preference
-    await _storageService.saveExpertPersonality(personalityType);
-    
-    // Update message to reflect personality change
-    final personalityName = personalityType.toString().split('.').last;
-    state = state.copyWith(
-      currentMessage: "I've adjusted my communication style to be more $personalityName. How does this feel?",
+      currentMessage: "I've adjusted my communication style. How can I help you?",
       currentEmotion: AvatarEmotion.helpful,
+      lastInteraction: DateTime.now(),
     );
     
     if (kDebugMode) {
@@ -419,31 +345,6 @@ class AvatarStateNotifier extends StateNotifier<AvatarState> {
       }
     });
   }
-
-  /// Handle voice input result
-  Future<void> handleVoiceInput(String transcript) async {
-    if (transcript.trim().isNotEmpty) {
-      await processUserMessage(transcript);
-    }
-    
-    // Reset voice input state
-    state = state.copyWith(
-      voiceInputEnabled: false,
-      currentState: AvatarStateType.idle,
-    );
-  }
-
-  // Private helper methods
-
-  String _getInitialMessage(ConversationContext? context) {
-    if (context == null || context.isNewUser) {
-      return TextConstants.newUserWelcome;
-    } else if (context.userName != null) {
-      return "Welcome back, ${context.userName}! Ready to continue building your compliance program?";
-    } else {
-      return TextConstants.welcomeMessage;
-    }
-  }
 }
 
 /// Provider for avatar state
@@ -455,26 +356,26 @@ final avatarStateProvider = StateNotifierProvider<AvatarStateNotifier, AvatarSta
   );
 });
 
-/// Provider for checking if avatar is speaking
-final avatarSpeakingProvider = Provider<bool>((ref) {
+/// Provider for checking if avatar is processing
+final avatarProcessingProvider = Provider<bool>((ref) {
   final avatarState = ref.watch(avatarStateProvider);
-  return avatarState.currentState == AvatarStateType.speaking;
+  return avatarState.isProcessing;
 });
 
-/// Provider for checking if avatar needs onboarding
-final needsOnboardingProvider = Provider<bool>((ref) {
+/// Provider for current avatar emotion
+final avatarEmotionProvider = Provider<AvatarEmotion>((ref) {
   final avatarState = ref.watch(avatarStateProvider);
-  return avatarState.shouldShowOnboarding;
+  return avatarState.currentEmotion;
 });
 
-/// Provider for contextual suggestions
-final contextualSuggestionsProvider = Provider<List<String>>((ref) {
+/// Provider for current avatar state
+final avatarCurrentStateProvider = Provider<AvatarStateType>((ref) {
   final avatarState = ref.watch(avatarStateProvider);
-  return avatarState.contextualSuggestions;
+  return avatarState.currentState;
 });
 
-/// Provider for avatar confidence level (for UI indicators)
-final avatarConfidenceProvider = Provider<double>((ref) {
+/// Provider for voice input state
+final voiceInputProvider = Provider<bool>((ref) {
   final avatarState = ref.watch(avatarStateProvider);
-  return avatarState.confidenceLevel;
+  return avatarState.voiceInputEnabled;
 });

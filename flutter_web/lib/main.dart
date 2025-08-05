@@ -11,11 +11,10 @@ import 'core/app/app.dart';
 import 'core/services/storage_service.dart';
 import 'core/services/audio_service.dart';
 
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../theme/app_theme.dart';
-import '../routing/app_router.dart';
+import 'core/theme/app_theme.dart';
+import 'core/routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

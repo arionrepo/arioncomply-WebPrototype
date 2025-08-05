@@ -455,7 +455,7 @@ class _ConversationInterfaceState extends ConsumerState<ConversationInterface>
 
   void _sendMessage(String message) {
     // Send message through provider
-    ref.read(conversationProvider.notifier).sendMessage(message);
+    ref.read(conversationProvider.notifier).addUserMessage(message);
     
     // Call optional callback
     widget.onMessageSent?.call(message);

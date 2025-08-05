@@ -29,6 +29,7 @@ dependencies:
   animations: ^2.0.11
   lottie: ^3.0.0              # Avatar animations (Lottie files)
   rive: ^0.12.4               # Advanced avatar animations
+  percent_indicator: ^4.2.1   # Progress bars for assessments
   cupertino_icons: ^1.0.8     # iOS-style icons
 
   # ===== VOICE & AUDIO =====

@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../models/conversation_message.dart';
+import '../models/conversation_context.dart';
 import '../models/expert_personality.dart';
 import '../services/expert_personality_engine.dart';
 import '../../../core/services/audio_service.dart';
@@ -679,17 +680,7 @@ Future<void> initializeStandaloneChat({String? context}) async {
   );
 }
 
-/// Clear conversation history
-Future<void> clearConversation() async {
-  state = state.copyWith(
-    messages: [],
-    isProcessing: false,
-    isListening: false,
-    currentTranscript: null,
-    lastError: null,
-    showSuggestions: true,
-    lastActivity: DateTime.now(),
-  );
+
   
   await _storageService.clearConversationHistory();
   

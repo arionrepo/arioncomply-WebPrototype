@@ -27,7 +27,7 @@ class AppRouter {
     debugLogDiagnostics: kDebugMode,
     
     // URL path strategy for web deployment
-    urlPathStrategy: UrlPathStrategy.path,
+    //urlPathStrategy: UrlPathStrategy.path,
     
     routes: [
       // Main Avatar Interface Route (Primary)

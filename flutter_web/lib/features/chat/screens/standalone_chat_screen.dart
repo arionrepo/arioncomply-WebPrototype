@@ -365,7 +365,7 @@ class _StandaloneChatScreenState extends ConsumerState<StandaloneChatScreen>
   }
 
   Widget _buildMessageBubble(ConversationMessage message) {
-    final isUser = message.sender == MessageSender.user;
+    final isUser = message.type == MessageSender.user;
     
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -733,7 +733,7 @@ class _StandaloneChatScreenState extends ConsumerState<StandaloneChatScreen>
     if (text.trim().isEmpty) return;
     
     final conversationNotifier = ref.read(conversationProvider.notifier);
-    conversationNotifier.sendMessage(text.trim());
+    conversationNotifier.addUserMessage(text.trim());
     
     _messageController.clear();
     _scrollToBottom();

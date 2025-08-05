@@ -11,6 +11,12 @@ import 'core/app/app.dart';
 import 'core/services/storage_service.dart';
 import 'core/services/audio_service.dart';
 
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../theme/app_theme.dart';
+import '../routing/app_router.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -53,11 +59,7 @@ Future<void> _initializeServices() async {
 // lib/core/app/app.dart
 // Main App Widget - Avatar-Centric Design
 
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-import '../theme/app_theme.dart';
-import '../routing/app_router.dart';
 
 class ArionComplyDemoApp extends StatelessWidget {
   const ArionComplyDemoApp({super.key});
@@ -167,7 +169,7 @@ class AppConstants {
 // lib/core/app/app_config.dart
 // Configuration for different environments and embedding modes
 
-import 'package:flutter/foundation.dart';
+
 
 class AppConfig {
   static AppConfig? _instance;

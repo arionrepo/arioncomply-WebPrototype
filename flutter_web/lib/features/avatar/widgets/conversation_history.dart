@@ -627,9 +627,7 @@ class _ConversationHistoryState extends State<ConversationHistory>
 // lib/shared/widgets/custom_text_field.dart
 // Custom text field for conversation input
 
-import 'package:flutter/material.dart';
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_text_styles.dart';
+
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;

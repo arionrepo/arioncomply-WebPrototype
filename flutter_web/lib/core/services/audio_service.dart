@@ -8,6 +8,15 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+
+import '../models/expert_personality.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/theme/app_colors.dart';
+
 class AudioService {
   static AudioService? _instance;
   static AudioService get instance => _instance ??= AudioService._();
@@ -328,10 +337,6 @@ class AudioService {
 // lib/features/avatar/widgets/voice_input_button.dart
 // Voice input button component
 
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/services/audio_service.dart';
-import '../../../core/theme/app_colors.dart';
 
 class VoiceInputButton extends ConsumerStatefulWidget {
   final bool isActive;
@@ -548,8 +553,7 @@ class VoiceSettings {
 // lib/features/avatar/providers/voice_provider.dart
 // Voice interaction state management
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/services/audio_service.dart';
+
 
 /// Voice service provider
 final audioServiceProvider = Provider<AudioService>((ref) {
@@ -656,9 +660,6 @@ class VoiceInputNotifier extends StateNotifier<VoiceInputState> {
 
 // lib/features/avatar/services/voice_personality_service.dart
 // Voice personality matching expert persona
-
-import '../../../core/services/audio_service.dart';
-import '../models/expert_personality.dart';
 
 class VoicePersonalityService {
   static VoicePersonalityService? _instance;

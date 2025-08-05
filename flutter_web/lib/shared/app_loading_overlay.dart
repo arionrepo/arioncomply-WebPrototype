@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
 
+
+import 'package:flutter/foundation.dart';
+
+
+
 /// Global loading overlay that can be shown over any screen
 class AppLoadingOverlay extends StatelessWidget {
   final bool isLoading;
@@ -73,10 +78,6 @@ class AppLoadingOverlay extends StatelessWidget {
 // App Error Boundary - Global error handling widget
 // Referenced in main.dart for app-wide error catching
 
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-
-import '../../core/theme/app_colors.dart';
 
 /// Error boundary widget that catches and displays errors gracefully
 class AppErrorBoundary extends StatefulWidget {

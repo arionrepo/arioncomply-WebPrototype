@@ -234,7 +234,7 @@ class AppTheme {
 // lib/core/theme/app_colors.dart
 // Color system optimized for compliance/professional context
 
-import 'package:flutter/material.dart';
+
 
 class AppColors {
   // Primary brand colors - Professional blue palette
@@ -340,8 +340,7 @@ class AppColors {
 // lib/core/theme/app_text_styles.dart
 // Typography system for professional compliance interface
 
-import 'package:flutter/material.dart';
-import 'app_colors.dart';
+
 
 class AppTextStyles {
   // Font family - Professional and readable
